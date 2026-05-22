@@ -1,0 +1,60 @@
+.sil {
+  transition: 0.2s;
+  padding: 6px 0 6px 12px;
+  border-radius: 5px;
+  &:hover {
+    background: var(--nav-btn-active-bg-color);
+    .playable {
+      opacity: 1;
+    }
+    .playable-overlay {
+      background-color: rgba(0, 0, 0, 0.25);
+    }
+  }
+  .can-play {
+    cursor: pointer;
+    height: 70px;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+  img {
+    width: 70px;
+    height: 70px;
+  }
+  .detail {
+    flex: 1;
+    padding: 12px;
+    .name {
+      font-size: 14px;
+    }
+    .artist {
+      font-size: 12px;
+    }
+    .sub-artist {
+      font-size: 10px;
+    }
+  }
+}
+.playing {
+  background: var(--playing-bg);
+}
+.playable-overlay {
+  position: absolute;
+  inset: 0;
+}
+.playable {
+  cursor: pointer;
+  opacity: 0;
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: 0.2s;
+  svg {
+    width: 100%;
+    height: 100%;
+    fill: rgba(255, 255, 255, 0.7);
+  }
+}

@@ -1,0 +1,76 @@
+.standout-ms-box {
+  margin-top: 14px;
+  padding: 12px;
+  border-radius: 10px;
+  background-color: var(--overlay-standout-color);
+  img {
+    width: 240px;
+    height: 240px;
+    border-radius: 10px;
+  }
+  .aud-list {
+    margin-left: 12px;
+    flex: 1;
+    width: calc(100% - 252px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+}
+.standout-song {
+  color: var(--song-standout-reflect-color);
+  padding: 10px 7px;
+  border-radius: 6px;
+  transition: 0.2s;
+  .song-wrapper {
+    width: 100%;
+  }
+  &:last-child {
+    margin-bottom: 0;
+  }
+  &:hover {
+    background-color: var(--hover-standout-color);
+  }
+  * {
+    text-decoration: none !important;
+  }
+  .main-artist {
+    padding-right: 8px;
+    color: var(--standout-main-atist);
+  }
+  .sub-artist {
+    color: var(--standout-main-atist);
+  }
+  .main-artist,
+  .sub-artist {
+    &:hover {
+      text-decoration: underline !important;
+    }
+  }
+  .song-name {
+    padding: 0 8px;
+    color: var(--standout-song-name);
+  }
+  .fas-info {
+    width: 60px;
+    color: var(--standout-main-atist);
+    min-width: 45px;
+    text-align: right;
+  }
+  .triangle-play {
+    width: 10px;
+    height: 9px;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-left: 10px solid var(--normal-text-color);
+    border-right: 5px solid transparent;
+  }
+}
+.divider-x:last-child .div-x {
+  display: none;
+}
+.name-oversize {
+  max-width: 70%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}

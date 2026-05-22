@@ -1,6 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { RootState } from '@store/store';
-
+import type { RootState } from '../store.ts';
 export interface PlayState {
   id?: string;
   playing: boolean;
@@ -21,7 +20,7 @@ export const playStateSlice = createSlice({
     pause: (state) => {
       state.playing = false;
     },
-  }
+  },
 });
 
 export const { pause, play } = playStateSlice.actions;

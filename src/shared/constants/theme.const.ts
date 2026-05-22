@@ -1,49 +1,49 @@
 export const DEFAULT_THEME = 'light';
 
-export const THEME_CHOICE = {
+export const ThemeOptions = {
   color: [
     {
       id: 'dark-theme',
       name: 'dark',
-      ref: '#000'
+      ref: '#000',
     },
     {
       id: 'light-theme',
       name: 'light',
-      ref: '#fff'
+      ref: '#fff',
     },
     {
       id: 'pink-theme',
       name: 'pink',
-      ref: '#ff1493'
-    }
+      ref: '#ff1493',
+    },
   ],
   chars: [
     {
       id: 'lisa-theme',
       name: 'lisa',
-      bgRef: 'assets/imgs/theme-background/lisa.jpg',
-      avatarRef: 'assets/imgs/theme-thumbnail/lisa.jpg'
+      bgRef: 'imgs/theme-background/lisa.jpg',
+      avatarRef: 'imgs/theme-thumbnail/lisa.jpg',
     },
     {
       id: 'jisoo-theme',
       name: 'jisoo',
-      bgRef: 'assets/imgs/theme-background/jisoo.jpg',
-      avatarRef: 'assets/imgs/theme-thumbnail/jisoo.jpg'
+      bgRef: 'imgs/theme-background/jisoo.jpg',
+      avatarRef: 'imgs/theme-thumbnail/jisoo.jpg',
     },
     {
       id: 'iu-theme',
       name: 'iu',
-      bgRef: 'assets/imgs/theme-background/iu.jpg',
-      avatarRef: 'assets/imgs/theme-thumbnail/iu.jpg'
+      bgRef: 'imgs/theme-background/iu.jpg',
+      avatarRef: 'imgs/theme-thumbnail/iu.jpg',
     },
     {
       id: 'jennie-theme',
       name: 'jennie',
-      bgRef: 'assets/imgs/theme-background/jennie.jpg',
-      avatarRef: 'assets/imgs/theme-thumbnail/jennie.jpg'
-    }
-  ]
+      bgRef: 'imgs/theme-background/jennie.jpg',
+      avatarRef: 'imgs/theme-thumbnail/jennie.jpg',
+    },
+  ],
 };
 export const SLIDER_SX = {
   color: 'var(--slider-active-color)',
@@ -65,7 +65,7 @@ export const SLIDER_SX = {
     },
   },
   '& .MuiSlider-track': {
-    backgroundColor: 'var(--slider-active-color)'
+    backgroundColor: 'var(--slider-active-color)',
   },
   '& .MuiSlider-rail': {
     opacity: 0.2,
@@ -92,7 +92,7 @@ export const VOLUME_SX = {
     },
   },
   '& .MuiSlider-track': {
-    backgroundColor: 'var(--volume-fill)'
+    backgroundColor: 'var(--volume-fill)',
   },
   '& .MuiSlider-rail': {
     opacity: 0.2,
@@ -119,7 +119,7 @@ export const MB_VOLUME_SX = {
     },
   },
   '& .MuiSlider-track': {
-    backgroundColor: 'var(--audio-control-fill)'
+    backgroundColor: 'var(--audio-control-fill)',
   },
   '& .MuiSlider-rail': {
     opacity: 0.2,

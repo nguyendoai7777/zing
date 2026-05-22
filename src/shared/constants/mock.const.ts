@@ -1,6 +1,5 @@
-import { SongBase } from '@models/media.model';
-import { GalleryInfinity } from '@models/share.model';
-import { Mp3 } from '@constants/urls.constant';
+import type { GalleryInfinity, SongBase } from '@typing';
+import { Mp3 } from './urls.const.ts';
 
 export const DEFAULT_VOLUME = 50;
 
@@ -8,12 +7,12 @@ export const DIS_HISTORY_SEARCH = [
   {
     img: 'https://photo-resize-zmp3.zmdcdn.me/w600_r1x1_webp/cover/c/3/5/3/c3537dcaeb2c551b523f92344023680c.jpg',
     href: '/profile/Hà-Nhi',
-    id: 'hanhi'
+    id: 'hanhi',
   },
   {
     img: 'https://photo-resize-zmp3.zmdcdn.me/w600_r1x1_webp/cover/9/e/4/c/9e4c1683182e0a4c7394835da9c953a6.jpg',
     href: '/profile/Lệ-Quyên',
-    id: 'lequyen'
+    id: 'lequyen',
   },
 ];
 
@@ -22,46 +21,45 @@ export const DIS_RECOMMENDED_ARTIST = [
     name: 'Nhí',
     img: 'https://i1.sndcdn.com/avatars-HiOWZCjLLUAE22g4-qaDRaw-t500x500.jpg',
     href: '/profile/Nhí',
-    id: 'dhs23s2asd4'
+    id: 'dhs23s2asd4',
   },
   {
     name: 'MIN',
     img: 'https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_webp/avatars/1/5/1/9/15190f3abbd650c209dd74d1637d93eb.jpg',
     href: '../artist/MIN',
-    id: 'dhs23ssdas2asd4'
+    id: 'dhs23ssdas2asd4',
   },
   {
     name: 'Grusi',
     img: 'https://i1.sndcdn.com/avatars-gI35Ax78Hau2znIh-gyZwFA-t500x500.jpg',
     href: '../artist/Grusi',
-    id: 'dhs23ssdas21asasscd4'
+    id: 'dhs23ssdas21asasscd4',
   },
   {
     name: 'Dope B',
     img: 'https://i1.sndcdn.com/avatars-SN3X899waafiPkxJ-9p66ag-t500x500.jpg',
     href: '../artist/DopeB',
-    id: 'dhs23ssdas222asd4'
+    id: 'dhs23ssdas222asd4',
   },
   {
     name: 'TiLo',
     img: 'https://yt3.ggpht.com/ytc/AMLnZu_cSfcgJFxzQvuTe6Lfjnxu6CrYSKnBVghHkIRv=s176-c-k-c0x00ffffff-no-rj-mo',
     href: '../artist/TiLo',
-    id: 'dhs23swqesdas2asd4'
+    id: 'dhs23swqesdas2asd4',
   },
   {
     name: 'dmixx',
     img: 'https://i1.sndcdn.com/avatars-fQyfBFFg97nHDJ9B-XhRXEg-t500x500.jpg',
     href: '../artist/dmixx',
-    id: 'dhs23ssd11as2asd4'
+    id: 'dhs23ssd11as2asd4',
   },
   {
     name: 'Linh Ku',
     img: 'https://i1.sndcdn.com/avatars-9gVnGERn3fqwjUKB-iUHxfw-t500x500.jpg',
     href: '../artist/LinhKu',
-    id: 'dhs23ssdassxcc2asd4'
+    id: 'dhs23ssdassxcc2asd4',
   },
 ];
-
 
 export const DIS_STANDOUT_SONG_LIST: SongBase[] = [
   {
@@ -70,7 +68,7 @@ export const DIS_STANDOUT_SONG_LIST: SongBase[] = [
     mainArtist: {
       id: 'phao',
       name: 'Pháo',
-      profileUrl: '/profile/Pháo'
+      profileUrl: '/profile/Pháo',
     },
     artwork: 'https://i1.sndcdn.com/artworks-FZScX6URzWnyTa1Z-z8MRtA-t500x500.jpg',
     mediaUrl: Mp3.DieuToa.url,
@@ -81,14 +79,14 @@ export const DIS_STANDOUT_SONG_LIST: SongBase[] = [
       {
         id: 'nhi',
         name: 'Nhí',
-        profileUrl: '/profile/Nhí'
+        profileUrl: '/profile/Nhí',
       },
       {
         id: 'timob',
         name: 'Timon',
-        profileUrl: '/profile/Timon'
-      }
-    ]
+        profileUrl: '/profile/Timon',
+      },
+    ],
   },
   {
     url: '/media/ANETAS',
@@ -96,7 +94,7 @@ export const DIS_STANDOUT_SONG_LIST: SongBase[] = [
     mainArtist: {
       id: 'saabirose',
       name: 'Saabirose',
-      profileUrl: '/profile/Saabirose'
+      profileUrl: '/profile/Saabirose',
     },
     artwork: 'https://i1.sndcdn.com/artworks-O1s6gMSfSx71nos2-x8N42g-t500x500.jpg',
     mediaUrl: Mp3.ANETAS.url,
@@ -107,14 +105,14 @@ export const DIS_STANDOUT_SONG_LIST: SongBase[] = [
       {
         id: 'nhi',
         name: 'Nhí',
-        profileUrl: '/profile/Nhí'
+        profileUrl: '/profile/Nhí',
       },
       {
         id: 'timon',
         name: 'Timon',
-        profileUrl: '/profile/Timon'
-      }
-    ]
+        profileUrl: '/profile/Timon',
+      },
+    ],
   },
   {
     url: '/media/hoa-no-khong-mau',
@@ -122,7 +120,7 @@ export const DIS_STANDOUT_SONG_LIST: SongBase[] = [
     mainArtist: {
       id: 'ntbn',
       name: 'NTBN',
-      profileUrl: '/profile/NTBN'
+      profileUrl: '/profile/NTBN',
     },
     artwork: 'https://i1.sndcdn.com/artworks-wm48h3Evg0qzqlZg-0w1wSw-t500x500.jpg',
     mediaUrl: Mp3.HoaNoKMau.url,
@@ -133,24 +131,24 @@ export const DIS_STANDOUT_SONG_LIST: SongBase[] = [
       {
         id: 'tilo',
         name: 'TiLo',
-        profileUrl: '/profile/TiLo'
+        profileUrl: '/profile/TiLo',
       },
       {
         id: 'timon',
         name: 'Timon',
-        profileUrl: '/profile/Timon'
+        profileUrl: '/profile/Timon',
       },
       {
         id: 'san',
         name: 'San',
-        profileUrl: '/profile/San'
+        profileUrl: '/profile/San',
       },
       {
         id: 'nhi',
         name: 'Nhí',
-        profileUrl: '/profile/Nhí'
-      }
-    ]
+        profileUrl: '/profile/Nhí',
+      },
+    ],
   },
   {
     url: '/media/xich-them-chut',
@@ -158,7 +156,7 @@ export const DIS_STANDOUT_SONG_LIST: SongBase[] = [
     mainArtist: {
       id: 'tlinh',
       name: 'TLinh',
-      profileUrl: '/profile/TLinh'
+      profileUrl: '/profile/TLinh',
     },
     artwork: 'https://i1.sndcdn.com/artworks-vyY6kcyCf4zQzqns-MTiGzg-t500x500.jpg',
     mediaUrl: Mp3.XichThemChut.url,
@@ -169,14 +167,14 @@ export const DIS_STANDOUT_SONG_LIST: SongBase[] = [
       {
         id: 'dmixx',
         name: 'dmixx',
-        profileUrl: '/profile/dmixx'
+        profileUrl: '/profile/dmixx',
       },
       {
         id: 'atrixx',
         name: 'ATrixx',
-        profileUrl: '/profile/ATrixx'
-      }
-    ]
+        profileUrl: '/profile/ATrixx',
+      },
+    ],
   },
   {
     url: '/media/dont-hurt',
@@ -184,20 +182,20 @@ export const DIS_STANDOUT_SONG_LIST: SongBase[] = [
     mainArtist: {
       id: 'tilo',
       name: 'TiLo',
-      profileUrl: '/profile/TiLo'
+      profileUrl: '/profile/TiLo',
     },
     artwork: 'https://i1.sndcdn.com/artworks-000618197671-cmuxhh-t500x500.jpg',
     mediaUrl: Mp3.DontHurt.url,
-    songName: 'Don\'t Hurt',
+    songName: "Don't Hurt",
     songDuration: 265,
     listenTimes: '2.2M',
     subArtist: [
       {
         id: 'longnhat',
         name: 'Long-Nhật',
-        profileUrl: '/profile/Long-Nhật'
+        profileUrl: '/profile/Long-Nhật',
       },
-    ]
+    ],
   },
   {
     url: '/media/vi-em-con-thuong',
@@ -205,15 +203,15 @@ export const DIS_STANDOUT_SONG_LIST: SongBase[] = [
     mainArtist: {
       id: 'lequyen',
       name: 'Lệ-Quyên',
-      profileUrl: '/profile/Lệ-Quyên'
+      profileUrl: '/profile/Lệ-Quyên',
     },
     artwork: 'https://i1.sndcdn.com/artworks-000474463272-eg4f29-t500x500.jpg',
     mediaUrl: Mp3.ViEmConThuong.url,
     songName: 'Vì Em Còn Thương',
     songDuration: 280,
     listenTimes: '122.2k',
-    subArtist: []
-  }
+    subArtist: [],
+  },
 ];
 
 export const TOP_100_ALL: SongBase[] = [
@@ -223,7 +221,7 @@ export const TOP_100_ALL: SongBase[] = [
     mainArtist: {
       id: 'lequyen',
       name: 'Lệ-Quyên',
-      profileUrl: '/profile/Lệ-Quyên'
+      profileUrl: '/profile/Lệ-Quyên',
     },
     artwork: 'https://photo-resize-zmp3.zmdcdn.me/w600_r1x1_webp/cover/b/7/1/4/b714f0e447b3ec8c9f903c4963e52422.jpg',
     mediaUrl: Mp3.TraiTimTonThuong.url,
@@ -285,7 +283,7 @@ export const TOP_100_ALL: SongBase[] = [
       { text: 'Nỗi buồn cứ vương mang mãi trong lòng', time: 241.86 },
       { text: 'Tàn phai giữa thế gian xoay vòng', time: 247.78 },
       { text: 'Nhặt từng cánh rớt rơi hoa hồng', time: 251.02 },
-      { text: 'Bay theo gió mùa đông', time: 254.55  },
+      { text: 'Bay theo gió mùa đông', time: 254.55 },
       { text: 'Càng yếu đuối càng khóc lâu hơn', time: 260.4 },
       { text: 'Càng mạnh mẽ càng thấy đau hơn', time: 263.87 },
       { text: 'Lối về ấy hôm nay sao khác thường', time: 267.37 },
@@ -294,7 +292,7 @@ export const TOP_100_ALL: SongBase[] = [
       { text: 'Hôm nay trái tim đã tổn thương', time: 280.11 },
       { text: 'Em ôm trái tim đã tổn thương', time: 286.35 },
       { text: '--', time: 300.35 },
-    ]
+    ],
   },
   {
     url: '/media/ai-roi-cung-se-khac',
@@ -302,7 +300,7 @@ export const TOP_100_ALL: SongBase[] = [
     mainArtist: {
       id: 'hanhi',
       name: 'Hà-Nhi',
-      profileUrl: '/profile/Hà-Nhi'
+      profileUrl: '/profile/Hà-Nhi',
     },
     artwork: 'https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_webp/avatars/e/7/a/a/e7aabe73d132476135be33977eeb1006.jpg',
     mediaUrl: Mp3.AiRoiCungSeKhac.url,
@@ -380,8 +378,7 @@ export const TOP_100_ALL: SongBase[] = [
       { text: 'Tìm cách xóa đi', time: 245.79 },
       { text: 'Dĩ vãng chưa phai nhòa', time: 249.05 },
       { text: '....', time: 261.19 },
-
-    ]
+    ],
   },
   {
     url: '/media/co-don-tren-sofa',
@@ -389,7 +386,7 @@ export const TOP_100_ALL: SongBase[] = [
     mainArtist: {
       id: 'hongocha',
       name: 'Hồ-Ngọc-Hà',
-      profileUrl: '/profile/Hồ-Ngọc-Hà'
+      profileUrl: '/profile/Hồ-Ngọc-Hà',
     },
     artwork: 'https://photo-resize-zmp3.zmdcdn.me/w600_r1x1_webp/cover/1/7/f/1/17f17c49523af7fd7827ce1e2981b412.jpg',
     mediaUrl: Mp3.CoDonTrenSofa.url,
@@ -400,202 +397,202 @@ export const TOP_100_ALL: SongBase[] = [
     lyric: [
       {
         text: 'Cô đơn trên sofa, con tim như tan ra',
-        time: 20
+        time: 20,
       },
       {
         text: 'Dẫn lối em trôi theo một khúc ca buồn',
-        time: 24
+        time: 24,
       },
       {
         text: 'Giữa căn phòng, ánh đèn chợt tắt',
-        time: 28
+        time: 28,
       },
       {
         text: 'Che đi giọt buồn sắp rơi',
-        time: 31
+        time: 31,
       },
       {
         text: 'Cô đơn trên sofa, sao anh yêu cô ta?',
-        time: 37
+        time: 37,
       },
       {
         text: 'Chẳng phải anh yêu em hơn cả anh mà?',
-        time: 41
+        time: 41,
       },
       {
         text: 'Để cho thanh xuân này chợt tắt',
-        time: 46
+        time: 46,
       },
       {
         text: 'Trên mi giọt nước mắt rơi',
-        time: 48.68
+        time: 48.68,
       },
       {
         text: 'Thì ra là thế, tình nào là tình chẳng mờ phai tháng năm',
-        time: 54.2
+        time: 54.2,
       },
       {
         text: 'Một ngày vẫn trôi, đôi môi em phai màu nắng',
-        time: 58.4
+        time: 58.4,
       },
       {
         text: 'Nếu không em thì anh có buồn?',
-        time: 62.4
+        time: 62.4,
       },
       {
         text: 'Hóa ra chỉ mình em đáng thương',
-        time: 66.5
+        time: 66.5,
       },
       {
         text: 'Đừng buông lời hứa rồi lại vờ rằng dường như anh đã quên',
-        time: 71
+        time: 71,
       },
       {
         text: 'Đừng tìm đến em gieo tương tư xong lại đi',
-        time: 75
+        time: 75,
       },
       {
         text: 'Nắng xuyên qua hàng mi rối bời',
-        time: 79.9
+        time: 79.9,
       },
       {
         text: 'Giữ tim em vài giây cuối thôi',
-        time: 83.2
+        time: 83.2,
       },
       {
         text: 'Để em được ngã lưng lên một chiếc sofa',
-        time: 87.46
+        time: 87.46,
       },
       {
         text: 'Để nghe một phút tim yên bình đến kỳ lạ',
-        time: 91
+        time: 91,
       },
       {
         text: 'Để em được sống vô tư như một bông hoa, giữa bầu trời kiêu sa',
-        time: 95
+        time: 95,
       },
       {
         text: 'Cho em thôi miệt mài nghĩ suy',
-        time: 101
+        time: 101,
       },
       {
         text: 'Người ơi hãy nói em nghe một lý do đi',
-        time: 104
+        time: 104,
       },
       {
         text: 'Vì sao lại để em vương sầu trên khóe mi?',
-        time: 108
+        time: 108,
       },
       {
         text: 'Vì sao lại biến cô đơn thành giông tố, nỗi buồn sóng vỗ?',
-        time: 112
+        time: 112,
       },
       {
         text: 'Tâm hồn em trôi lênh đênh trong căn phòng',
-        time: 118
+        time: 118,
       },
       {
         text: 'Rồi lại rơi xuống trên sofa',
-        time: 121.12
+        time: 121.12,
       },
       {
         text: 'Rồi lại rơi xuống trên sofa',
-        time: 124.48
+        time: 124.48,
       },
       {
         text: 'Rồi lại rơi xuống trên sofa',
-        time: 129.46
+        time: 129.46,
       },
       {
         text: 'Rồi lại rơi xuống trên sofa',
-        time: 133.48
+        time: 133.48,
       },
       {
         text: 'Cô đơn trên sofa, sao anh yêu cô ta?',
-        time: 138.72
+        time: 138.72,
       },
       {
         text: 'Chẳng phải anh yêu em hơn cả anh mà?',
-        time: 143.54
+        time: 143.54,
       },
       {
         text: 'Để cho thanh xuân này chợt tắt',
-        time: 147.55
+        time: 147.55,
       },
       {
         text: 'Trên mi giọt nước mắt rơi',
-        time: 150.9
+        time: 150.9,
       },
 
       {
         text: 'Thì ra là thế, tình nào là tình chẳng mờ phai tháng năm',
-        time: 155.46
+        time: 155.46,
       },
       {
         text: 'Một ngày vẫn trôi, đôi môi em phai màu nắng',
-        time: 160.2
+        time: 160.2,
       },
       {
         text: 'Nếu không em thì anh có buồn?',
-        time: 164.4
+        time: 164.4,
       },
       {
         text: 'Hóa ra chỉ mình em đáng thương',
-        time: 168.16
+        time: 168.16,
       },
       {
         text: 'Đừng buông lời hứa rồi lại vờ rằng dường như anh đã quên',
-        time: 173.09
+        time: 173.09,
       },
       {
         text: 'Đừng tìm đến em gieo tương tư xong lại đi',
-        time: 177.21
+        time: 177.21,
       },
       {
         text: 'Nắng xuyên qua hàng mi rối bời',
-        time: 181
+        time: 181,
       },
       {
         text: 'Giữ tim em vài giây cuối thôi',
-        time: 185.57
+        time: 185.57,
       },
       {
         text: 'Để em được ngã lưng lên một chiếc sofa',
-        time: 188.9
+        time: 188.9,
       },
       {
         text: 'Để nghe một phút tim yên bình đến kỳ lạ',
-        time: 193.35
+        time: 193.35,
       },
       {
         text: 'Để em được sống vô tư như một bông hoa, giữa bầu trời kiêu sa',
-        time: 197.21
+        time: 197.21,
       },
       {
         text: 'Cho em thôi miệt mài nghĩ suy',
-        time: 202.9
+        time: 202.9,
       },
       {
         text: 'Người ơi hãy nói em nghe một lý do đi',
-        time: 205.96
+        time: 205.96,
       },
       {
         text: 'Vì sao lại để em vương sầu trên khóe mi?',
-        time: 210.35
+        time: 210.35,
       },
       {
         text: 'Vì sao lại biến cô đơn thành giông tố, nỗi buồn sóng vỗ?',
-        time: 214.65
+        time: 214.65,
       },
       {
         text: 'Tâm hồn em trôi lênh đênh trong căn phòng',
-        time: 220.11
+        time: 220.11,
       },
       {
         text: '[End - quẩy nhạc đi]',
-        time: 220.11
+        time: 220.11,
       },
-    ]
+    ],
   },
   ...DIS_STANDOUT_SONG_LIST,
   {
@@ -604,7 +601,7 @@ export const TOP_100_ALL: SongBase[] = [
     mainArtist: {
       id: 'miu-le',
       name: 'Miu-Lê',
-      profileUrl: '/profile/Miu-Lê'
+      profileUrl: '/profile/Miu-Lê',
     },
     artwork: 'https://i1.sndcdn.com/artworks-4F34gYJVW9Qa4X0o-rv6uPA-t500x500.jpg',
     mediaUrl: Mp3.GacLaiAuLo.url,
@@ -615,14 +612,14 @@ export const TOP_100_ALL: SongBase[] = [
       {
         id: 'san',
         name: 'San',
-        profileUrl: '/profile/San'
+        profileUrl: '/profile/San',
       },
       {
         id: 'timon',
         name: 'Timon',
-        profileUrl: '/profile/Timon'
+        profileUrl: '/profile/Timon',
       },
-    ]
+    ],
   },
   {
     url: '/media/in-the-dark',
@@ -630,7 +627,7 @@ export const TOP_100_ALL: SongBase[] = [
     mainArtist: {
       id: 'tia',
       name: 'Tia',
-      profileUrl: '/profile/Tia'
+      profileUrl: '/profile/Tia',
     },
     artwork: 'https://i1.sndcdn.com/artworks-R2CiqpWpW7zLsveJ-5pBwzA-t500x500.jpg',
     mediaUrl: Mp3.InTheDark.url,
@@ -641,19 +638,19 @@ export const TOP_100_ALL: SongBase[] = [
       {
         id: 'ba',
         name: 'Bảo-Anh',
-        profileUrl: '/profile/Bảo-Anh'
+        profileUrl: '/profile/Bảo-Anh',
       },
       {
         id: 'timon',
         name: 'Timon',
-        profileUrl: '/profile/Timon'
+        profileUrl: '/profile/Timon',
       },
       {
         id: 'nhi',
         name: 'Nhí',
-        profileUrl: '/profile/Nhí'
+        profileUrl: '/profile/Nhí',
       },
-    ]
+    ],
   },
   {
     url: '/media/vi-yeu-1-luc-3-anh',
@@ -661,7 +658,7 @@ export const TOP_100_ALL: SongBase[] = [
     mainArtist: {
       id: 'yen-le',
       name: 'Yến-Lê',
-      profileUrl: '/profile/Yến-Lê'
+      profileUrl: '/profile/Yến-Lê',
     },
     artwork: 'https://photo-resize-zmp3.zmdcdn.me/w600_r1x1_webp/cover/c/c/f/e/ccfe8b5a6fae272663e612daaa1e5208.jpg',
     mediaUrl: Mp3.ViYeu1Luc3Anh.url,
@@ -672,19 +669,19 @@ export const TOP_100_ALL: SongBase[] = [
       {
         id: 'dope-b',
         name: 'Dope-B',
-        profileUrl: '/profile/Dope-B'
+        profileUrl: '/profile/Dope-B',
       },
       {
         id: 'timon',
         name: 'Timon',
-        profileUrl: '/profile/Timon'
+        profileUrl: '/profile/Timon',
       },
       {
         id: 'vac',
         name: 'Vac',
-        profileUrl: '/profile/Vac'
+        profileUrl: '/profile/Vac',
       },
-    ]
+    ],
   },
   {
     url: '/media/lung-lo',
@@ -692,7 +689,7 @@ export const TOP_100_ALL: SongBase[] = [
     mainArtist: {
       id: 'y-tien',
       name: 'Ý-Tiên',
-      profileUrl: '/profile/Ý-Tiên'
+      profileUrl: '/profile/Ý-Tiên',
     },
     artwork: 'https://i1.sndcdn.com/artworks-000513902004-p24rpe-t500x500.jpg',
     mediaUrl: Mp3.LungLo.url,
@@ -703,12 +700,11 @@ export const TOP_100_ALL: SongBase[] = [
       {
         id: 'tilo',
         name: 'TiLo',
-        profileUrl: '/profile/TiLo'
-      }
-    ]
+        profileUrl: '/profile/TiLo',
+      },
+    ],
   },
 ];
-
 
 export const generateSongsByAmount = (loop = 100) => {
   const l = [];
@@ -831,7 +827,7 @@ export const TOP_100_GALLERY_OBJ: { [key: string | number]: GalleryInfinity[] } 
       release: '31/10/2022',
       artwork: 'https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/a/b/3/8/ab389ff054099f722894413871b08644.jpg',
     },
-  ]
+  ],
 };
 
 export const TOP_100_GALLERY = [

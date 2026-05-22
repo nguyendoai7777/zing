@@ -1,6 +1,6 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { RootState } from '@store/store';
-import { LOCAL_KEY } from '@constants/storage-key.const';
+import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
+import { StorageKey } from '@const';
+import type { RootState } from '../store.ts';
 
 export type UnionLoop = 0 | 1 | 2;
 
@@ -10,8 +10,8 @@ export interface LoopState {
 }
 
 const initialState: LoopState = {
-  loop: +(localStorage.getItem(LOCAL_KEY.SetLoop) || 0) as UnionLoop,
-  shuffle: (localStorage.getItem(LOCAL_KEY.SetShuffle) || '0') === '1'
+  loop: +(localStorage.getItem(StorageKey.SetLoop) || 0) as UnionLoop,
+  shuffle: (localStorage.getItem(StorageKey.SetShuffle) || '0') === '1',
 };
 
 export const mediaControlSlice = createSlice({
@@ -20,15 +20,15 @@ export const mediaControlSlice = createSlice({
   reducers: {
     setLoop: (state, action: PayloadAction<UnionLoop>) => {
       state.loop = action.payload;
-      localStorage.setItem(LOCAL_KEY.SetLoop, JSON.stringify(action.payload));
+      localStorage.setItem(StorageKey.SetLoop, JSON.stringify(action.payload));
     },
     setShuffle: (state, action: PayloadAction<boolean>) => {
       state.shuffle = action.payload;
-      localStorage.setItem(LOCAL_KEY.SetShuffle, JSON.stringify(action.payload ? 1 : 0));
-    }
-  }
+      localStorage.setItem(StorageKey.SetShuffle, JSON.stringify(action.payload ? 1 : 0));
+    },
+  },
 });
 
 export const { setLoop, setShuffle } = mediaControlSlice.actions;
 export const selectLoopState = (state: RootState) => state.loop;
-export const mediaControlReducer = mediaControlSlice.reducer;
+export const loopReducer = mediaControlSlice.reducer;

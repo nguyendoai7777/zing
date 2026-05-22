@@ -1,0 +1,31 @@
+.visualization {
+  width: calc(100% - 300px);
+  margin-left: 14px;
+}
+.s-detail {
+  overflow: hidden;
+  .s-info {
+    width: 300px;
+    margin-left: 40px;
+    .decorator {
+      width: 280px;
+    }
+  }
+}
+.lyrics-box {
+  padding-top: 20px;
+  .header-pai {
+    padding-top: 7px;
+    margin-top: 0;
+    margin-bottom: 20px;
+  }
+}
+.np-ps {
+  margin-left: 50px;
+  .profile-songs .list-root .main {
+    margin-left: 0;
+  }
+}
+.need-bg {
+  background-color: var(--background-color-all);
+}

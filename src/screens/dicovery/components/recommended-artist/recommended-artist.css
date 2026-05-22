@@ -1,0 +1,32 @@
+.recommended-item {
+  /*width: calc(100% / 7 - 28px) !important;
+  border-radius: 6px !important;
+  overflow: hidden !important;
+  margin: 0 14px !important;
+  color: #f6f6f6 !important;*/
+  img {
+    width: 100%;
+    height: auto;
+  }
+  .backdrop {
+    inset: 0;
+    background: rgba(0, 0, 0, 0.3);
+  }
+  .artist-name {
+    left: 50%;
+    bottom: 8px;
+    transform: translateX(-50%);
+    font-weight: 700;
+    font-size: 18px;
+    color: #fff !important;
+  }
+  .artist-inkbar {
+    width: 60%;
+    left: 50%;
+    bottom: 5px;
+    height: 2px;
+    border-radius: 10px;
+    background-color: rgb(0 0 0 / 80%);
+    transform: translateX(-50%);
+  }
+}

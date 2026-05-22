@@ -1,0 +1,39 @@
+/*---------------------------*/
+.gallery-root {
+  /*width: calc(100% - 120px);
+  margin: auto;*/
+  overflow: hidden;
+  .gallery-animate {
+  }
+  .gallery-nav {
+    display: inline-flex;
+    padding: 12px;
+    overflow: hidden;
+    width: 240px;
+    img {
+      border-radius: 5px;
+      width: 100%;
+      display: inline-block;
+    }
+  }
+  .animate-line {
+    width: 2880px;
+    &:nth-child(2) {
+      margin-left: -120px;
+      /*.animate-entity {
+        animation-delay: 1s;
+      }*/
+    }
+  }
+  .animate-entity {
+    animation: automation-left 40s linear infinite;
+  }
+}
+@keyframes automation-left {
+  0% {
+    margin-left: 0;
+  }
+  100% {
+    margin-left: -1440px;
+  }
+}

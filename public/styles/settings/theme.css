@@ -1,0 +1,368 @@
+@font-face {
+  font-family: 'FuzzyBubbles';
+  src: url('/fonts/FuzzyBubbles-Regular.ttf');
+}
+html,
+* {
+  font-family: 'FuzzyBubbles';
+  padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  user-select: none;
+  color: var(--normal-text-color);
+  scroll-behavior: smooth;
+}
+
+:root {
+  --slide-overlay: rgba(128, 128, 128, 0.1);
+  --medium-fontsize: 13px;
+  --large-fontsize: 16px;
+  --left-sidebar-width: 240px;
+  --right-sidebar-width: 330px;
+  --nav-height: 70px;
+  --media-height: 90px;
+}
+.dark-theme {
+  --background-color-all-blur: #1d1d1d;
+  --audio-control-fill: #484848;
+  --tooltip-bg: #000;
+  --tooltip-text: #fff;
+  --border-reflect: #424242;
+  --mp-active: rgba(255, 255, 255, 0.25);
+  --text-btn-hl: #fff;
+  --focused: #1976d2;
+  --popover-bg: #161616;
+  --volume-fill: #fff;
+  --volume-danger: orangered;
+  --ctrl-icon: #fff;
+  --slider-active-color: #fff;
+  --ripple-color-base: #fff;
+  --media-player-bg-color: #000;
+  --standout-main-atist-hover: black;
+  --standout-main-atist: #aaa;
+  --standout-song-name: #fff;
+  --background-color-all: #1d1d1d;
+  --navbar-background-color: #000;
+  --normal-text-color: #fff;
+  --left-sb-background-color: #000;
+  --right-sb-background-color: #141414;
+  --search-ic-fill: #efefef;
+  --search-box-bg-color: #ffffff0d;
+  --text-search-color: #f1f1f1;
+  --search-filled-bg-color: #313131;
+  --btn-save-text-color: #fff;
+  --btn-save-hover-color: rgba(255, 20, 147, 0.35);
+  --scrollbar-color: #676767;
+  --text-theme-picked-color: deeppink;
+  --theme-picked-shadow-color: rgb(0 0 0 / 35%);
+  --nav-btn-active-bg-color: #ffffff3b;
+  --playing-bg: rgba(255, 255, 255, 0.2);
+  --nav-active-detective: #fff;
+  --overlay-standout-color: #ffffff0d;
+  --hover-standout-color: rgba(255, 255, 255, 0.25);
+  --song-standout-reflect-color: #f1f1f1;
+  .slide-gallery .skeleton-4-slide {
+    background: #ffffff33;
+    &:after {
+      background: linear-gradient(90deg, transparent, rgb(255 255 255 / 22%), transparent);
+    }
+  }
+}
+.light-theme {
+  --background-color-all-blur: rgba(255, 255, 255, 0.5);
+  --audio-control-fill: #484848;
+  --tooltip-bg: #525252;
+  --tooltip-text: #fff;
+  --border-reflect: #d9d9d9;
+  --mp-active: rgba(0, 0, 0, 0.05);
+  --text-btn-hl: #fff;
+  --focused: #1976d2;
+  --popover-bg: #fff;
+  --volume-fill: #000;
+  --volume-danger: orangered;
+  --ctrl-icon: #000;
+  --slider-active-color: #000;
+  --ripple-color-base: #fff;
+  --media-player-bg-color: #f8f8f8;
+  --standout-main-atist-hover: black;
+  --standout-main-atist: #585858;
+  --standout-song-name: #000;
+  --background-color-all: #fff;
+  --navbar-background-color: #fff;
+  --normal-text-color: #000;
+  --left-sb-background-color: #f4f4f4;
+  --right-sb-background-color: #f0f0f0;
+  --search-ic-fill: #656565;
+  --search-box-bg-color: rgba(0, 0, 0, 0.05);
+  --text-search-color: #282828;
+  --search-filled-bg-color: #e3e3e3;
+  --btn-save-text-color: #fff;
+  --btn-save-hover-color: rgba(255, 20, 147, 0.35);
+  --scrollbar-color: #aaaaaa;
+  --text-theme-picked-color: deeppink;
+  --theme-picked-shadow-color: rgb(0 0 0 / 35%);
+  --nav-btn-active-bg-color: #00000014;
+  --playing-bg: rgba(103, 103, 103, 0.2);
+  --nav-active-detective: #676767;
+  --overlay-standout-color: rgba(182, 182, 182, 0.25);
+  --hover-standout-color: #0000000f;
+  --song-standout-reflect-color: #000;
+  .slide-gallery .skeleton-4-slide {
+    background: #0000001a;
+    &:after {
+      background: linear-gradient(90deg, transparent, #fff, transparent);
+    }
+  }
+}
+.pink-theme {
+  --background-color-all-blur: #ffc6e5;
+  --audio-control-fill: #484848;
+  --tooltip-bg: deeppink;
+  --tooltip-text: #fff;
+  --border-reflect: #ffaedc;
+  --mp-active: rgba(255, 255, 255, 0.25);
+  --text-btn-hl: #fff;
+  --focused: #1976d2;
+  --popover-bg: #ff9fd3;
+  --volume-fill: #fff;
+  --volume-danger: orangered;
+  --ctrl-icon: #fff;
+  --slider-active-color: deeppink;
+  --ripple-color-base: #fff;
+  --media-player-bg-color: #ffaad8;
+  --standout-main-atist-hover: black;
+  --standout-main-atist: #e5e5e5;
+  --standout-song-name: #fff;
+  --background-color-all: #ffc6e5;
+  --navbar-background-color: #000;
+  --normal-text-color: #fff;
+  --left-sb-background-color: #ff9fd3;
+  --right-sb-background-color: #ffb6dd;
+  --search-ic-fill: #efefef;
+  --search-box-bg-color: rgba(0, 0, 0, 0.05);
+  --text-search-color: #f1f1f1;
+  --search-filled-bg-color: #f6c7e0;
+  --btn-save-text-color: #fff;
+  --btn-save-hover-color: rgba(255, 20, 147, 0.35);
+  --scrollbar-color: #e09fc2;
+  --text-theme-picked-color: #fff;
+  --theme-picked-shadow-color: rgb(0 0 0 / 35%);
+  --nav-btn-active-bg-color: #ffffff47;
+  --playing-bg: rgba(255, 255, 255, 0.2);
+  --nav-active-detective: #fff;
+  --overlay-standout-color: #ffabd8;
+  --hover-standout-color: #0000000f;
+  --song-standout-reflect-color: #f1f1f1;
+  .slide-gallery .skeleton-4-slide {
+    background: #ff14931a;
+    &:after {
+      background: linear-gradient(90deg, transparent, #ffffff7a, transparent);
+    }
+  }
+}
+.lisa-theme {
+  --background-color-all-blur: rgba(242, 221, 216, 0.6);
+  --audio-control-fill: #484848;
+  --tooltip-bg: #ff8a8a;
+  --tooltip-text: #fff;
+  --border-reflect: #ffcaca;
+  --mp-active: rgba(255, 255, 255, 0.25);
+  --text-btn-hl: #fff;
+  --focused: #1976d2;
+  --popover-bg: #f3eae8;
+  --volume-fill: #000;
+  --volume-danger: orangered;
+  --ctrl-icon: #000;
+  --slider-active-color: #ff8a8a;
+  --ripple-color-base: #fff;
+  --media-player-bg-color: #f4d6cf;
+  --standout-main-atist-hover: black;
+  --standout-main-atist: #737373;
+  --standout-song-name: #000;
+  --background-color-all: #f2ddd8;
+  --normal-text-color: #181818;
+  --navbar-background-color: #fff;
+  --left-sb-background-color: #ffffff24;
+  --right-sb-background-color: #f6e8e5;
+  --search-ic-fill: #656565;
+  --search-box-bg-color: rgba(0, 0, 0, 0.05);
+  --text-search-color: #282828;
+  --search-filled-bg-color: #f9e6e2;
+  --btn-save-text-color: #fff;
+  --btn-save-hover-color: rgba(255, 20, 147, 0.35);
+  --scrollbar-color: #f3b4aeff;
+  --text-theme-picked-color: #ff85c7;
+  --theme-picked-shadow-color: rgb(0 0 0 / 35%);
+  --nav-btn-active-bg-color: #ff8a8a33;
+  --playing-bg: rgba(255, 138, 138, 0.2);
+  --nav-active-detective: #ff8a8a;
+  --overlay-standout-color: rgba(255, 255, 255, 0.25);
+  --hover-standout-color: #0000000f;
+  --song-standout-reflect-color: #000;
+  .slide-gallery .skeleton-4-slide {
+    background: #f89d881a;
+    &:after {
+      background: linear-gradient(90deg, transparent, #ffffff80, transparent);
+    }
+  }
+}
+.jisoo-theme {
+  --background-color-all-blur: rgba(255, 255, 255, 0.5);
+  --audio-control-fill: #484848;
+  --tooltip-bg: #4a5c82;
+  --tooltip-text: #fff;
+  --border-reflect: #45577d4a;
+  --mp-active: rgba(18, 55, 131, 0.05);
+  --text-btn-hl: #fff;
+  --focused: #1976d2;
+  --popover-bg: #fff;
+  --volume-fill: #000;
+  --volume-danger: orangered;
+  --ctrl-icon: #000;
+  --slider-active-color: #4a5c82;
+  --ripple-color-base: #fff;
+  --media-player-bg-color: #fff;
+  --standout-main-atist-hover: black;
+  --standout-main-atist: #aaa;
+  --standout-song-name: #000;
+  --background-color-all: #fff;
+  --normal-text-color: #181818;
+  --navbar-background-color: #fff;
+  --left-sb-background-color: #0000000d;
+  --right-sb-background-color: #f5f5f5;
+  --search-ic-fill: #656565;
+  --search-box-bg-color: rgba(0, 0, 0, 0.05);
+  --text-search-color: #282828;
+  --search-filled-bg-color: #efefef;
+  --btn-save-text-color: #fff;
+  --btn-save-hover-color: rgba(255, 20, 147, 0.35);
+  --scrollbar-color: #bcc2cd;
+  --text-theme-picked-color: #ff85c7;
+  --theme-picked-shadow-color: rgb(0 0 0 / 35%);
+  --nav-btn-active-bg-color: #4a5c8229;
+  --playing-bg: rgba(74, 92, 130, 0.2);
+  --nav-active-detective: #4a5c82;
+  --view-more-ripple-color: rgba(7, 7, 7, 0.15);
+  --overlay-standout-color: rgba(255, 255, 255, 0.25);
+  --hover-standout-color: #0000000f;
+  --song-standout-reflect-color: #000;
+  .slide-gallery .skeleton-4-slide {
+    background: #9898981a;
+    &:after {
+      background: linear-gradient(90deg, transparent, #ffffff80, transparent);
+    }
+  }
+}
+.iu-theme {
+  --background-color-all-blur: rgba(230, 224, 222, 0.6);
+  --audio-control-fill: #484848;
+  --tooltip-bg: #8f5541;
+  --tooltip-text: #fff;
+  --border-reflect: #8f554152;
+  --mp-active: rgba(255, 255, 255, 0.25);
+  --text-btn-hl: #fff;
+  --focused: #1976d2;
+  --popover-bg: #f6eeec;
+  --volume-fill: #000;
+  --volume-danger: orangered;
+  --ctrl-icon: #000;
+  --slider-active-color: #8f5541;
+  --ripple-color-base: #fff;
+  --media-player-bg-color: #f4e6e2;
+  --standout-main-atist-hover: black;
+  --standout-main-atist: #aaa;
+  --standout-song-name: #000;
+  --background-color-all: #e6e0de;
+  --normal-text-color: #181818;
+  --navbar-background-color: #fff;
+  --left-sb-background-color: #0000000d;
+  --right-sb-background-color: #ddd7d5;
+  --search-ic-fill: #656565;
+  --search-box-bg-color: rgba(0, 0, 0, 0.05);
+  --text-search-color: #282828;
+  --search-filled-bg-color: #ebe5e4;
+  --btn-save-text-color: #fff;
+  --btn-save-hover-color: rgba(255, 20, 147, 0.35);
+  --scrollbar-color: #ccb4ac;
+  --text-theme-picked-color: #ff85c7;
+  --theme-picked-shadow-color: rgb(0 0 0 / 35%);
+  --nav-btn-active-bg-color: #d3ac9f4f;
+  --playing-bg: rgba(143, 85, 65, 0.2);
+  --nav-active-detective: #8f5541;
+  --overlay-standout-color: rgba(255, 255, 255, 0.25);
+  --hover-standout-color: #0000000f;
+  --song-standout-reflect-color: #000;
+  .slide-gallery .skeleton-4-slide {
+    background: #e6b7a840;
+    &:after {
+      background: linear-gradient(90deg, transparent, #ffffff80, transparent);
+    }
+  }
+}
+.jennie-theme {
+  --background-color-all-blur: rgba(187, 185, 196, 0.6);
+  --audio-control-fill: #484848;
+  --tooltip-bg: #411151;
+  --tooltip-text: #fff;
+  --border-reflect: #4111513b;
+  --mp-active: rgba(255, 255, 255, 0.12);
+  --text-btn-hl: #fff;
+  --focused: #1976d2;
+  --popover-bg: #f2ebff;
+  --volume-fill: #000;
+  --volume-danger: orangered;
+  --ctrl-icon: #000;
+  --slider-active-color: #411151;
+  --media-player-bg-color: #c4b9c7;
+  --background-color-all: #bbb9c4;
+  --normal-text-color: #181818;
+  --navbar-background-color: #fff;
+  --left-sb-background-color: #9692a847;
+  --right-sb-background-color: #b8b6c2;
+  --search-ic-fill: #656565;
+  --search-box-bg-color: rgba(0, 0, 0, 0.05);
+  --text-search-color: #282828;
+  --search-filled-bg-color: #dcd3e4;
+  --btn-save-text-color: #fff;
+  --btn-save-hover-color: rgba(255, 20, 147, 0.35);
+  --scrollbar-color: #ba71dc;
+  --text-theme-picked-color: #ff85c7;
+  --theme-picked-shadow-color: rgb(0 0 0 / 35%);
+  --nav-btn-active-bg-color: #8075b329;
+  --playing-bg: rgba(65, 17, 81, 0.2);
+  --nav-active-detective: #411151;
+  --overlay-standout-color: rgba(255, 255, 255, 0.25);
+  --hover-standout-color: #0000000f;
+  --song-standout-reflect-color: #000;
+  .slide-gallery .skeleton-4-slide {
+    background: #9277aa1a;
+    &:after {
+      background: linear-gradient(90deg, transparent, #ffffff80, transparent);
+    }
+  }
+}
+.jennie-bg {
+  background-image: url(../../imgs/theme-background/jennie.jpg);
+  background-color: var(--background-color-all);
+}
+.iu-bg {
+  background-image: url(../../imgs/theme-background/iu.jpg);
+  background-color: var(--background-color-all);
+}
+.jisoo-bg {
+  background-image: url(../../imgs/theme-background/jisoo.jpg);
+  background-color: var(--background-color-all);
+}
+.lisa-bg {
+  background-image: url(../../imgs/theme-background/lisa.jpg);
+  background-color: var(--background-color-all);
+}
+.dark-theme {
+  background-color: var(--background-color-all);
+}
+.dark-theme {
+  background-color: var(--background-color-all);
+}
+.pink-theme {
+  background-color: var(--background-color-all);
+}

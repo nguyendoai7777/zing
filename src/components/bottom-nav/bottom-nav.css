@@ -1,0 +1,17 @@
+.bottom-nav-item {
+  width: calc(100% / 3);
+  .nav-overlay-root {
+    width: 100% !important;
+    height: 58px;
+    svg {
+      width: 40px;
+      height: 40px;
+      fill: var(--ctrl-icon);
+    }
+  }
+  &.active .nav-overlay-root {
+    svg {
+      fill: var(--nav-active-detective);
+    }
+  }
+}

@@ -1,0 +1,20 @@
+.main {
+  width: calc(100% - var(--right-sidebar-width) - var(--right-sidebar-width));
+  flex: 1;
+}
+.scrollable-body {
+  padding-bottom: 24px;
+  height: calc(100% - var(--nav-height));
+}
+.rx-content {
+  height: calc(100vh - var(--media-height));
+}
+.drawer-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: calc(100vh - var(--media-height));
+  width: calc(100%);
+  background-color: rgba(0, 0, 0, 0.15);
+  z-index: 1001;
+}

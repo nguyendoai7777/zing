@@ -1,4 +1,4 @@
-export const LOCAL_KEY = {
+export const StorageKey = {
   SetTheme: 'SetTheme',
   SetBackground: 'SetBackground',
   SetCurrentSong: 'SetCurrentSong',
@@ -10,5 +10,5 @@ export const LOCAL_KEY = {
   SetHistoryList: 'SetHistoryList',
   SetMute: 'SetMute',
   PlayList: 'PlayList',
-  PlayListLayout: 'PlayListLayout'
-}
+  PlayListLayout: 'PlayListLayout',
+} as const;

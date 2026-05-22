@@ -1,0 +1,40 @@
+.d-wrapper {
+  padding: 24px;
+  min-width: 400px;
+}
+.create-playlist-dialog {
+  .text-field-with-icon {
+    padding-top: 5px;
+    .Mui-focused {
+    }
+    #create-playlist {
+      padding-right: 35px;
+    }
+    /*.MuiFormLabel-root {
+      transform: translate(0, 16px) scale(1);
+      &.Mui-focused {
+        transform: translate(0, 0) scale(.75);
+      }
+    }*/
+    .Mui-focused {
+      .create-icon {
+        fill: var(--nav-active-detective);
+      }
+    }
+    .create-icon {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 16px;
+      height: 16px;
+      fill: var(--ctrl-icon);
+    }
+  }
+  .invalid-content-input {
+    position: absolute;
+    top: calc(100% + 5px);
+    left: 0;
+    font-size: 11px;
+  }
+}

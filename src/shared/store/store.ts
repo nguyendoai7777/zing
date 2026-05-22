@@ -1,24 +1,23 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
-import { mediaPlayerReducer } from '@store/slices/media-player.slice';
-import { playStateReducer } from '@store/slices/play-state.slice';
-import { mediaControlReducer } from './slices/loop-state.slice';
-import { selectListenedReducer } from '@store/slices/listened-history.slice';
-import { playlistReducer } from '@store/slices/playlist.slice';
+import { type TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
+import { mediaPlayerReducer } from './slices/media-player.slice.ts';
+import { playStateReducer } from './slices/play-state.slice.ts';
+import { selectListenedReducer } from './slices/listened-history.slice.ts';
+import { playlistReducer } from './slices/playlist.slice.ts';
+import { loopReducer } from '@store/slices/loop-state.slice.ts';
 
 export const store = configureStore({
   reducer: {
     mediaPlayer: mediaPlayerReducer,
     playState: playStateReducer,
-    loop: mediaControlReducer,
+    loop: loopReducer,
     listenedHistory: selectListenedReducer,
     playlist: playlistReducer,
-  }
+  },
 });
 
-export type RootState = ReturnType<typeof store.getState>
+export type RootState = ReturnType<typeof store.getState>;
 export type DispatchType = typeof store.dispatch;
-
 
 /**
  *  hooks for redux/toolkit

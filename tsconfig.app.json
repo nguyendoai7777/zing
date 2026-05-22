@@ -2,14 +2,9 @@
   "compilerOptions": {
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
     "target": "esnext",
-    "lib": [
-      "ES2023",
-      "DOM"
-    ],
+    "lib": ["ES2023", "DOM"],
     "module": "esnext",
-    "types": [
-      "vite/client"
-    ],
+    "types": ["vite/client", "src/global.d.ts"],
     "skipLibCheck": true,
     /* Bundler mode */
     "moduleResolution": "bundler",
@@ -25,12 +20,19 @@
     "noFallthroughCasesInSwitch": true,
     "baseUrl": ".",
     "paths": {
-      "@typing": [
-        "src/common/types"
-      ]
+      "@typing": ["src/shared/types"],
+      "@hooks": ["src/shared/hooks"],
+      "@shared": ["src/shared"],
+      "@utils": ["src/shared/utils"],
+      "@const": ["src/shared/constants"],
+      "@services": ["src/shared/services"],
+      "@store/*": ["src/shared/store/*"],
+      "@api": ["src/shared/api"],
+      "@config": ["src/shared/config"],
+      "@root-routes": ["src/app/app.routing.ts"],
+      "@components/*": ["src/components/*"],
+      "@pages/*": ["src/pages/*"]
     }
   },
-  "include": [
-    "src"
-  ]
+  "include": ["src"]
 }

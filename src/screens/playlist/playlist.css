@@ -1,0 +1,82 @@
+.playlist-list {
+  .sil {
+    padding: 12px;
+  }
+}
+.change-layout-btn {
+  padding: 5px !important;
+  svg {
+    width: 24px;
+    height: 24px;
+    fill: var(--ctrl-icon);
+  }
+  &.active svg {
+    fill: var(--nav-active-detective);
+  }
+}
+.layout-controller {
+  width: 100%;
+  .delete-button {
+    opacity: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 15px;
+    transition: 0.2s;
+    svg {
+      fill: var(--ctrl-icon);
+      width: 20px;
+      height: 20px;
+    }
+  }
+  /* .sil-item {
+     width: calc(100% / 3);
+   }*/
+}
+.list {
+  flex-direction: row;
+  .decorate-root {
+    width: 30%;
+  }
+  .layout-controller {
+    width: 70%;
+    flex-direction: column;
+  }
+  .listened-item {
+    width: 100%;
+  }
+  .sil-item {
+    position: relative;
+    margin-top: 12px;
+    &:after {
+      content: '';
+      position: absolute;
+      top: calc(100% + 6px);
+      display: block;
+      left: 0;
+      height: 1px;
+      width: 100%;
+      background-color: #aaa;
+    }
+  }
+}
+.grid {
+  .layout-controller {
+    flex-wrap: wrap;
+  }
+  .sil-item {
+    width: calc(100% / 3);
+    .sil {
+      border-bottom: none;
+    }
+    &:hover .delete-button {
+      opacity: 1;
+    }
+  }
+  .layout-controller {
+    flex-direction: row;
+  }
+}
