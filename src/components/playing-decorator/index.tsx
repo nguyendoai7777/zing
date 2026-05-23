@@ -66,11 +66,11 @@ export const PlayingDecorator = (pr: PlayingDecoratorProps) => {
         </div>
         {playing && currentSong?.id === pr.currentsong?.id && (
           <svg className="playing-ic-wa absolute-center">
-            <use href="#playing-animate" />
+            <use href="#PlayingAnimate" />
           </svg>
         )}
         <svg className={`playing-ic-wa dc-playable absolute-center ${playing && currentSong?.id === pr.currentsong?.id ? 'hidden' : ''}`}>
-          <use href="#playable" />
+          <use href="#Playable" />
         </svg>
         {currentSong?.id === pr.currentsong?.id ? (
           <div className={`circular-progress ${playing && currentSong?.id === pr.currentsong?.id ? 'playing' : ''}`}>

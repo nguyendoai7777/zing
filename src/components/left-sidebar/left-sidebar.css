@@ -6,6 +6,8 @@
  * }
 */
 .lsb-r {
+  position: sticky;
+  top: 0;
   width: var(--left-sidebar-width);
   max-width: var(--left-sidebar-width);
   min-width: var(--left-sidebar-width);

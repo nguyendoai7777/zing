@@ -66,7 +66,7 @@ export const CreatePlaylistDialog: FCC<CreatePlaylistDialogProps> = ({ open, onC
               }}
               endAdornment={
                 <svg className="create-icon">
-                  <use href="#pen" />
+                  <use href="#Pen" />
                 </svg>
               }
             />

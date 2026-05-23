@@ -44,12 +44,12 @@ export const PlaylistScreen = () => {
           <div className="flex justify-content-end">
             <ButtonBase className={`change-layout-btn ${layout === 'grid' ? 'active' : ''}`} onClick={() => changeLayout('grid')}>
               <svg>
-                <use href="#grid" />
+                <use href="#Grid" />
               </svg>
             </ButtonBase>
             <ButtonBase className={`change-layout-btn ${layout === 'list' ? 'active' : ''}`} onClick={() => changeLayout('list')}>
               <svg>
-                <use href="#list" />
+                <use href="#List" />
               </svg>
             </ButtonBase>
           </div>
@@ -87,7 +87,7 @@ export const PlaylistScreen = () => {
                     >
                       <ButtonBase className="delete-button" onClick={() => dispatch(removeOneToPlaylist({ childId: e.id, parentId: playlistId! }))}>
                         <svg>
-                          <use href="#delete" />
+                          <use href="#Delete" />
                         </svg>
                       </ButtonBase>
                     </SongInDetail>

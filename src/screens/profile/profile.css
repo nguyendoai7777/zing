@@ -22,15 +22,15 @@
     }
   }
 }
-.information {
-  @keyframes ir {
-    0% {
-      transform: rotate(0);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
+@keyframes ir {
+  0% {
+    transform: rotate(0);
   }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.information {
   .decorator-line-root {
     position: absolute;
     top: -50%;

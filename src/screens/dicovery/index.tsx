@@ -11,6 +11,7 @@ import DIconButton from '@components/icon-button';
 import { NavButton } from '@components/single-components';
 import { StandoutMusic } from './components/standout-music/standout-music.tsx';
 import { RecommendedArtist } from './components/recommended-artist/recommended-artist.tsx';
+import { Scrollable } from 'rx-scrollable';
 
 const SWIPER_OPTION: SwiperOptions = {
   autoplay: true,
@@ -36,7 +37,7 @@ export const DiscoveryScreen = () => {
     }, 2000);
   }, []);
   return (
-    <div className="my-scrollbar">
+    <Scrollable options={{ scrollbars: { autoHide: 'scroll' } }} defer className="my-scrollbar">
       <div className="slide-gallery relative ml-scroll-left ml-scroll-right">
         {gallery.length > 0 ? (
           <>
@@ -47,7 +48,7 @@ export const DiscoveryScreen = () => {
               onClick={() => swiperController!.slidePrev()}
             >
               <svg>
-                <use href="#slide-prev" />
+                <use href="#SlidePrev" />
               </svg>
             </DIconButton>
             <DIconButton
@@ -57,7 +58,7 @@ export const DiscoveryScreen = () => {
               onClick={() => swiperController!.slideNext()}
             >
               <svg style={{ transform: 'rotate(-180deg)' }}>
-                <use href="#slide-prev" />
+                <use href="#SlidePrev" />
               </svg>
             </DIconButton>
             <Swiper
@@ -116,6 +117,6 @@ export const DiscoveryScreen = () => {
           </div>
         </div>
       </div>
-    </div>
+    </Scrollable>
   );
 };

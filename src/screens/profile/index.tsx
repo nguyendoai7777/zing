@@ -119,14 +119,14 @@ export const Profile = () => {
       >
         <MenuItem className="add-to-list relative" onClick={(e) => setCreatePlaylist(true)}>
           <svg className="ref-icon mr-df">
-            <use href="#add" />
+            <use href="#Add" />
           </svg>
           Tạo mới
         </MenuItem>
         {playlist.map((e) => (
           <MenuItem key={e.id} onClick={() => addOneSongToPlaylist(selectedSong!, e.id)}>
             <svg className="ref-icon mr-df">
-              <use href="#playlist" />
+              <use href="#Playlist" />
             </svg>
             {e.name}
           </MenuItem>

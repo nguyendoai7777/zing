@@ -11,7 +11,7 @@ export const LeftSidebar = () => {
       <div className="logo"></div>
       {APP_ROUTING.map((e) => (
         <NavLink to={e.path!} key={e.key} className="text-decoration-none nav-link-routing">
-          <NavButton className="cs-pointer" onClick={nav} iconRef={e.path!} text={nameConverter(e.name)} />
+          <NavButton className="cs-pointer" onClick={nav} iconRef={e.icon!} text={nameConverter(e.name)} />
         </NavLink>
       ))}
     </div>

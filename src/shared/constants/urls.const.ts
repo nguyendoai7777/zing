@@ -10,19 +10,19 @@ const BACK_GROUND_IMAGE = {
 export const SLIDE_LIST = [
   {
     key: 'slide-key-1',
-    img: 'imgs/slide/aofa.jpg',
+    img: '/imgs/slide/aofa.jpg',
   },
   {
     key: 'slide-key-2',
-    img: 'imgs/slide/han-xeng.jpg',
+    img: '/imgs/slide/han-xeng.jpg',
   },
   {
     key: 'slide-key-3',
-    img: 'imgs/slide/top-hit.jpg',
+    img: '/imgs/slide/top-hit.jpg',
   },
   {
     key: 'slide-key-4',
-    img: 'imgs/slide/ly.jpg',
+    img: '/imgs/slide/ly.jpg',
   },
 ];
 

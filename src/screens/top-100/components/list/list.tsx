@@ -1,8 +1,8 @@
 import './list.css';
 import { Link } from 'react-router-dom';
 import { ButtonBase } from '@mui/material';
-import { forwardRef, useEffect, useRef, useState } from 'react';
-import type { MouseEvent, ReactElement } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import type { MouseEvent, ReactElement, Ref } from 'react';
 import type { MousePosition, SongBase } from '@typing';
 import { selectMediaPlayer, setCurrentSong } from '@store/slices/media-player.slice';
 import { pause, play, selectPlayState } from '@store/slices/play-state.slice';
@@ -11,6 +11,7 @@ import { pushOne } from '@store/slices/listened-history.slice';
 import { durationConverter, nameConverter } from '@utils';
 
 export interface List100Props {
+  ref?: Ref<HTMLDivElement>;
   index?: number;
   song: SongBase;
   onContextMenu?: (e: MouseEvent) => void;
@@ -61,7 +62,7 @@ export const ContextMenu = (pr: ContextMenuProps) => {
   );
 };
 
-export const List100 = forwardRef<HTMLDivElement, List100Props>(({ onAdd, song, onPlay, index, onContextMenu, isAtTop, className }, ref) => {
+export const List100 = ({ onAdd, song, onPlay, index, onContextMenu, isAtTop, className, ref }: List100Props) => {
   const { currentSong } = useAppSelector(selectMediaPlayer);
   const { playing } = useAppSelector(selectPlayState);
   const dispatch = useAppDispatch();
@@ -100,11 +101,11 @@ export const List100 = forwardRef<HTMLDivElement, List100Props>(({ onAdd, song, 
             <div className="state user-select-none disable-event absolute-center">
               {playing && currentSong?.id === song.id ? (
                 <svg>
-                  <use href={`#playing-animate`} />
+                  <use href={`#PlayingAnimate`} />
                 </svg>
               ) : (
                 <svg className="play-pos">
-                  <use href={`#playable`} />
+                  <use href={`#Playable`} />
                 </svg>
               )}
             </div>
@@ -142,7 +143,7 @@ export const List100 = forwardRef<HTMLDivElement, List100Props>(({ onAdd, song, 
             <span className="duration">{durationConverter(song.songDuration)}</span>
             <ButtonBase className="button" onClick={(e) => onAdd && onAdd(e)}>
               <svg>
-                <use href="#add" />
+                <use href="#Add" />
               </svg>
             </ButtonBase>
           </div>
@@ -150,4 +151,4 @@ export const List100 = forwardRef<HTMLDivElement, List100Props>(({ onAdd, song, 
       </div>
     </>
   );
-});
+};

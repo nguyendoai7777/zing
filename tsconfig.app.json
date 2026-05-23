@@ -31,7 +31,7 @@
       "@config": ["src/shared/config"],
       "@root-routes": ["src/app/app.routing.ts"],
       "@components/*": ["src/components/*"],
-      "@pages/*": ["src/pages/*"]
+      "@pages/*": ["src/screens/*"]
     }
   },
   "include": ["src"]

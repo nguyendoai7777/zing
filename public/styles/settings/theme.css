@@ -22,6 +22,9 @@ html,
   --nav-height: 70px;
   --media-height: 90px;
 }
+#root {
+  background-attachment: fixed;
+}
 .dark-theme {
   --background-color-all-blur: #1d1d1d;
   --audio-control-fill: #484848;

@@ -1,4 +1,4 @@
-import { forwardRef, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import type { ChangeEvent, ReactElement, Ref } from 'react';
 import { Dialog, DialogTitle, Fade, Slide } from '@mui/material';
 import type { TransitionProps } from '@mui/material/transitions';
@@ -11,14 +11,14 @@ import { CustomButtonOutlined } from '@components/custom-buttom';
 import { setTheme } from '@utils';
 import DIconButton from '@components/icon-button';
 
-const Transition = forwardRef(function Transition(
+function Transition(
   props: TransitionProps & {
     children: ReactElement<any, any>;
-  },
-  ref: Ref<unknown>
+    ref?: Ref<unknown>;
+  }
 ) {
-  return <Slide direction="down" ref={ref} {...props} children={props.children} />;
-});
+  return <Slide direction="down" ref={props.ref} {...props} children={props.children} />;
+}
 
 const CHAR_THEME_LIST = ThemeOptions.chars as ThemeChar[];
 const COLOR_THEME_LIST = ThemeOptions.color as ThemeColor[];
@@ -104,18 +104,18 @@ export function Navbar() {
 
   return (
     <>
-      <div className="d-navbar" ref={navRef}>
+      <div className="d-navbar flex items-center justify-center flex-1 sticky top-0 z-10" ref={navRef}>
         <div className="fa-center nav-leading">
           <Link to="discovery" className="text-decoration-none back-home">
             <DIconButton shape="circle" siz="60px" cls="action-button">
               <svg className="redirect-home">
-                <use href="#home" />
+                <use href="#Home" />
               </svg>
             </DIconButton>
           </Link>
           <div className={`search-box fa-center ${inpFocus && searchText ? 's_active' : ''}`}>
             <svg className="sic absolute">
-              <use href="#search" />
+              <use href="#Search" />
             </svg>
             <input
               style={{
@@ -141,7 +141,7 @@ export function Navbar() {
                 }}
               >
                 <svg className="sct">
-                  <use href="#search-clear" />
+                  <use href="#SearchClear" />
                 </svg>
               </DIconButton>
             )}
@@ -150,11 +150,11 @@ export function Navbar() {
         </div>
         <div className="main-actions fa-center">
           <DIconButton onClick={() => setOpenDialog(true)} shape="circle" siz="60px" cls="action-button">
-            <img width="34px" src="imgs/theme.svg" alt="" />
+            <img width="34px" src="/imgs/theme.svg" alt="" />
           </DIconButton>
           <DIconButton shape="circle" siz="60px" cls="action-button">
             <svg className="icon-style">
-              <use href="#setting" />
+              <use href="#Setting" />
             </svg>
           </DIconButton>
         </div>

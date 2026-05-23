@@ -1,4 +1,6 @@
 .rsb-r {
+  position: sticky;
+  top: 0;
   width: var(--right-sidebar-width);
   max-width: var(--right-sidebar-width);
   min-width: var(--right-sidebar-width);
@@ -25,7 +27,7 @@
     }
   }
   &.expand {
-    left: (calc(100% - var(--right-sidebar-width)));
+    left: calc(100% - var(--right-sidebar-width));
     .expand-right svg {
       transform: rotate(180deg);
     }

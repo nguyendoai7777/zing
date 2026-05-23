@@ -1,4 +1,4 @@
-import type { ReactElement, ReactNode, MouseEvent, Context } from 'react';
+import type { ReactElement, ReactNode, MouseEvent, Context, RefObject } from 'react';
 
 declare global {
   export type PropsWithChildren<P> = P & {
@@ -20,4 +20,6 @@ declare global {
 declare module 'react' {
   function createContext<T>(defaultValue: T): Context<T>;
   function createContext<T = undefined>(): Context<T>;
+
+  function useRef<T>(): RefObject<T>;
 }

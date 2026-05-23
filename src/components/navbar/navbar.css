@@ -1,9 +1,6 @@
 .d-navbar {
   height: var(--nav-height);
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  background: var(--background-color-all);
   .redirect-home {
     width: 50px;
     height: 50px;

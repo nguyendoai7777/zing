@@ -1,6 +1,6 @@
 import { ButtonBase } from '@mui/material';
 import { Link } from 'react-router-dom';
-import { forwardRef, type MouseEvent } from 'react';
+import type { MouseEvent, Ref, RefObject } from 'react';
 import { useAppSelector } from '@store/store';
 import { selectMediaPlayer } from '@store/slices/media-player.slice';
 import type { SongBase } from '@typing';
@@ -9,21 +9,22 @@ import DIconButton from '@components/icon-button';
 
 interface CombinePropsWithBase {
   className?: string;
-  onClick?: (e: MouseEvent<HTMLElement>) => void;
-  onOptionClick?: (e: MouseEvent<HTMLButtonElement>) => void;
-  mode?: 'delete' | 'small-more';
+  ref?: Ref<HTMLDivElement>;
   isPlaying?: boolean;
-  onDoubleClick?: () => void;
+  onClick?(e: MouseEvent<HTMLElement>): void;
+  onOptionClick?(e: MouseEvent<HTMLButtonElement>): void;
+  onDoubleClick?(): void;
+  mode?: 'delete' | 'small-more';
   isMobile: boolean;
 }
 
 type LHBProps = Omit<SongBase, 'songDuration' | 'listenTimes' | 'key' | 'index' | 'subArtist' | 'mediaUrl'>;
 
-export const ListenedSongItem = forwardRef<HTMLDivElement, CombinePropsWithBase & LHBProps>((pr, ref) => {
+export const ListenedSongItem: FCC<CombinePropsWithBase & LHBProps> = (pr) => {
   const { currentSong } = useAppSelector(selectMediaPlayer);
   return (
     <div
-      ref={ref}
+      ref={pr.ref}
       className={`listened-item fa-center ${pr.className ? pr.className : ''} ${currentSong?.id === pr.id ? 'selected' : ''}`}
       onDoubleClick={() => pr.onDoubleClick && pr.onDoubleClick()}
     >
@@ -37,7 +38,7 @@ export const ListenedSongItem = forwardRef<HTMLDivElement, CombinePropsWithBase 
           <img src={pr.artwork} alt="" />
           {pr.isPlaying && (
             <svg className="playing-animate absolute-center">
-              <use href="#playing-animate" />
+              <use href="#PlayingAnimate" />
             </svg>
           )}
         </div>
@@ -53,10 +54,10 @@ export const ListenedSongItem = forwardRef<HTMLDivElement, CombinePropsWithBase 
       {!pr.isMobile && (
         <DIconButton className={`lde RippleColorTheme`} shape="box" onClick={(e) => pr.onOptionClick && pr.onOptionClick(e)}>
           <svg>
-            <use href={`#${!pr.mode ? 'small-more' : 'delete'}`} />
+            <use href={`#${!pr.mode ? 'SmallMore' : 'Delete'}`} />
           </svg>
         </DIconButton>
       )}
     </div>
   );
-});
+};

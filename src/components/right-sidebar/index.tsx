@@ -47,7 +47,7 @@ export function RightSidebar({ onToggleSidebar, id }: RightSidebarProps) {
           Danh sách phát
           <ButtonBase className="expand-right absolute" onClick={toggleExpand}>
             <svg>
-              <use href="#slide-prev" />
+              <use href="#SlidePrev" />
             </svg>
           </ButtonBase>
         </div>

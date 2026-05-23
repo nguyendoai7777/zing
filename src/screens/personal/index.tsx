@@ -17,7 +17,7 @@ export const PersonalScreen = () => {
             <ButtonBase className="heading-button">
               <div className="text">Xem Thêm</div>
               <svg className="rotate-180">
-                <use href="#slide-prev" />
+                <use href="#SlidePrev" />
               </svg>
             </ButtonBase>
           </div>
@@ -27,7 +27,7 @@ export const PersonalScreen = () => {
             <ButtonBase className="heading-button" onClick={() => setCreatePlaylist(true)}>
               <div className="text">Tạo mới</div>
               <svg>
-                <use href="#add" />
+                <use href="#Add" />
               </svg>
             </ButtonBase>
           </div>

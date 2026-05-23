@@ -6,9 +6,7 @@
   padding-bottom: 24px;
   height: calc(100% - var(--nav-height));
 }
-.rx-content {
-  height: calc(100vh - var(--media-height));
-}
+
 .drawer-overlay {
   position: fixed;
   top: 0;

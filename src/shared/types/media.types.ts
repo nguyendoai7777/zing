@@ -1,5 +1,4 @@
-import { ArtisBaseInfo } from '@models/artist.model';
-import { RefObject } from 'react';
+import type { ArtisBaseInfo } from './artist.types';
 
 export interface SongBase {
   id: string;

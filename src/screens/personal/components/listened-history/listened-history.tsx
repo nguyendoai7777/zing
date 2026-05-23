@@ -102,7 +102,7 @@ export const ListenedHistory = () => {
       >
         <MenuItem onClick={() => deleteOneSong(selectedSong?.id!)}>
           <svg className="ref-icon mr-df">
-            <use href="#delete" />
+            <use href="#Delete" />
           </svg>
           Xóa
         </MenuItem>
@@ -116,7 +116,7 @@ export const ListenedHistory = () => {
         onMouseLeave={(e) => setSubOptionRef(null)}*/
         >
           <svg className="ref-icon mr-df">
-            <use href="#add" />
+            <use href="#Add" />
           </svg>
           Thêm vào playlist
         </MenuItem>
@@ -136,14 +136,14 @@ export const ListenedHistory = () => {
       >
         <MenuItem className="add-to-list relative" onClick={(e) => setCreatePlaylist(true)}>
           <svg className="ref-icon mr-df">
-            <use href="#add" />
+            <use href="#Add" />
           </svg>
           Tạo mới
         </MenuItem>
         {playlist.map((e) => (
           <MenuItem key={e.id} onClick={() => addOneSongToPlaylist(selectedSong!, e.id)}>
             <svg className="ref-icon mr-df">
-              <use href="#playlist" />
+              <use href="#Playlist" />
             </svg>
             {e.name}
           </MenuItem>

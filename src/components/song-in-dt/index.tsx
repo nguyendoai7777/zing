@@ -22,7 +22,7 @@ export const SongInDetail = (pr: Props & CombinePropsWithBase) => {
         <img src={pr.artwork} alt="" />
         <div className="playable">
           <svg>
-            <use href={`#${pr.isPlaying ? 'pauseable' : 'playable'}`} />
+            <use href={`#${pr.isPlaying ? 'Pauseable' : 'Playable'}`} />
           </svg>
         </div>
         <div className="playable-overlay"></div>

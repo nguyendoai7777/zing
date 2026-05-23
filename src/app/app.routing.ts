@@ -1,30 +1,33 @@
 import type { Routes } from '@typing';
-import { DiscoveryScreen } from '../screens/dicovery/discovery.tsx';
-import { Top100Screen } from '../screens/top-100/top-100.tsx';
-import { PersonalScreen } from '../screens/personal/personal.tsx';
-import { PlaylistScreen } from '../screens/playlist/playlist.tsx';
-import { Profile } from '../screens/profile/profile.tsx';
-import { Top100Album } from '../screens/top-100-album/top-100-album.tsx';
-import { Visualization } from '../screens/visualization/visualization.tsx';
 import { createElement } from 'react';
+import { DiscoveryScreen } from '@pages/dicovery';
+import { Visualization } from '@pages/visualization';
+import { Top100Album } from '@pages/top-100-album';
+import { Profile } from '@pages/profile';
+import { Top100Screen } from '@pages/top-100';
+import { PersonalScreen } from '@pages/personal';
+import { PlaylistScreen } from '@pages/playlist';
 
 export const APP_ROUTING: Routes[] = [
   {
     name: 'Khám Phá',
     key: 'routes-id-1',
     path: 'discovery',
+    icon: 'Discovery',
     element: createElement(DiscoveryScreen),
   },
   {
     name: 'Top 100',
     key: 'routes-id-5',
     path: 'top100',
+    icon: 'Top100',
     element: createElement(Top100Screen),
   },
   {
     name: 'Cá Nhân',
     key: 'routes-id-2',
     path: 'personal',
+    icon: 'Personal',
     element: createElement(PersonalScreen),
   },
 
@@ -32,6 +35,7 @@ export const APP_ROUTING: Routes[] = [
      name: '#zchart',
      key: 'routes-id-3',
      path: 'zchart',
+     icon: 'Zchart',
      element: createElement(ZchartScreen),
 
    },
@@ -40,6 +44,7 @@ export const APP_ROUTING: Routes[] = [
      name: 'Radio',
      key: 'routes-id-4',
      path: 'radio',
+     icon: 'Radio',
      element: createElement(RadioScreen),
 
    },
@@ -50,6 +55,7 @@ export const APP_ROUTING: Routes[] = [
      name: 'Thể Loại',
      key: 'routes-id-6',
      path: 'category',
+     icon: 'Category',
      element: createElement(CategoryScreen),
 
    },*/

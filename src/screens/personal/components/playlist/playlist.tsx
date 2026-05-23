@@ -41,7 +41,7 @@ const PlaylistItem = (pr: Omit<PlaylistState, 'createAt'> & PlaylistItemEvent) =
             }}
           >
             <svg style={{ transform: 'rotate(45deg)' }} className="p-delete">
-              <use href="#add" />
+              <use href="#Add" />
             </svg>
           </ButtonBase>
         </ColourTooltip>
@@ -55,7 +55,7 @@ const PlaylistItem = (pr: Omit<PlaylistState, 'createAt'> & PlaylistItemEvent) =
               }}
             >
               <svg className="p-delete">
-                <use href="#playable" />
+                <use href="#Playable" />
               </svg>
             </ButtonBase>
           </ColourTooltip>

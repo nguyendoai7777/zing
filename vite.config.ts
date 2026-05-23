@@ -34,4 +34,7 @@ export default defineConfig({
   resolve: {
     alias: resolvePathsAlias(),
   },
+  server: {
+    port: 7777,
+  },
 });
