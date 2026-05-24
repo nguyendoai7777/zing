@@ -1,7 +1,7 @@
 import { type UIEvent, useEffect, useRef, useState } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
 import './visualization.css';
-import type { SongBase } from '@typing';
+import type { Song } from '@typing';
 import { analyser, barWidth, bufferLength, TOP_100_ALL } from '@const';
 import { PlayingDecorator } from '@components/playing-decorator';
 
@@ -15,7 +15,7 @@ export const Visualization = () => {
 
   /*const [duration, setDuration] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);*/
-  const [info, setInfo] = useState<SongBase>();
+  const [info, setInfo] = useState<Song>();
   const [needColor, setNeedColor] = useState(false);
   const { songId } = useParams();
 

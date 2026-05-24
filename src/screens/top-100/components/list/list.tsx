@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { ButtonBase } from '@mui/material';
 import { useEffect, useRef, useState } from 'react';
 import type { MouseEvent, ReactElement, Ref } from 'react';
-import type { MousePosition, SongBase } from '@typing';
+import type { MousePosition, Song } from '@typing';
 import { selectMediaPlayer, setCurrentSong } from '@store/slices/media-player.slice';
 import { pause, play, selectPlayState } from '@store/slices/play-state.slice';
 import { useAppDispatch, useAppSelector } from '@store/store';
@@ -13,7 +13,7 @@ import { durationConverter, nameConverter } from '@utils';
 export interface List100Props {
   ref?: Ref<HTMLDivElement>;
   index?: number;
-  song: SongBase;
+  song: Song;
   onContextMenu?: (e: MouseEvent) => void;
   isAtTop?: boolean;
   onPlay?: () => void;

@@ -5,7 +5,7 @@ import { useAppDispatch } from '@store/store';
 import { setCurrentLists } from '@store/slices/media-player.slice';
 import { addOneToPlaylist, type PlaylistState } from '@store/slices/playlist.slice';
 import { Menu, MenuItem } from '@mui/material';
-import type { ArtisProfile, SongBase } from '@typing';
+import type { ArtisProfile, Song } from '@typing';
 import { PROFILES } from '@const';
 import { nameConverter } from '@utils';
 import { List100 } from '../top-100/components/list/list.tsx';
@@ -19,12 +19,12 @@ export const Profile = () => {
   const [hue, setHue] = useState(0);
   const [subOptionRef, setSubOptionRef] = useState<null | HTMLElement>(null);
   const [createPlaylist, setCreatePlaylist] = useState(false);
-  const [selectedSong, setSelectedSong] = useState<SongBase | null>(null);
+  const [selectedSong, setSelectedSong] = useState<Song | null>(null);
   const [playlist, setPlaylist] = useState<PlaylistState[]>([]);
 
   const openSubOptionRef = Boolean(subOptionRef);
 
-  const onSelectSong = (e: MouseEvent<HTMLElement>, currentSong: SongBase) => {
+  const onSelectSong = (e: MouseEvent<HTMLElement>, currentSong: Song) => {
     setSubOptionRef(e.currentTarget);
     setSelectedSong(currentSong);
   };
@@ -33,7 +33,7 @@ export const Profile = () => {
     setSelectedSong(null);
   };
 
-  const addOneSongToPlaylist = (song: SongBase, parentId: string) => {
+  const addOneSongToPlaylist = (song: Song, parentId: string) => {
     dispatch(addOneToPlaylist({ song, parentId }));
   };
 

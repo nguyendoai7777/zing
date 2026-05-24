@@ -4,14 +4,14 @@ import { pause, play, selectPlayState } from '@store/slices/play-state.slice';
 import { type CSSProperties, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { selectMediaPlayer, setCurrentSong } from '@store/slices/media-player.slice';
-import type { SongBase } from '@typing';
+import type { Song } from '@typing';
 import { audioElement } from '@const';
 import { nameConverter } from '@utils';
 
 export interface PlayingDecoratorProps {
   className?: string;
   style?: CSSProperties;
-  currentsong?: SongBase;
+  currentsong?: Song;
 }
 
 export const PlayingDecorator = (pr: PlayingDecoratorProps) => {

@@ -4,7 +4,7 @@ import { ButtonBase } from '@mui/material';
 import { useAppDispatch, useAppSelector } from '@store/store.ts';
 import { selectMediaPlayer, setCurrentSong } from '@store/slices/media-player.slice.ts';
 import { pause, play, selectPlayState } from '@store/slices/play-state.slice.ts';
-import type { SongBase } from '@typing';
+import type { Song } from '@typing';
 import { pushOne } from '@store/slices/listened-history.slice.ts';
 import { SongInDetail } from '@components/song-in-dt';
 
@@ -20,7 +20,7 @@ export function RightSidebar({ onToggleSidebar, id }: RightSidebarProps) {
 
   const [expand, setExpand] = useState(false);
 
-  const playSong = (e: SongBase) => {
+  const playSong = (e: Song) => {
     if (currentSong?.id === e.id) {
       dispatch(playing ? pause() : play());
     } else {

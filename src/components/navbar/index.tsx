@@ -10,6 +10,7 @@ import type { CreatePlaylistDialogProps } from '../../screens/personal/component
 import { CustomButtonOutlined } from '@components/custom-buttom';
 import { setTheme } from '@utils';
 import DIconButton from '@components/icon-button';
+import { Scrollable } from 'rx-scrollable';
 
 function Transition(
   props: TransitionProps & {
@@ -47,10 +48,10 @@ const SelectThemeDialog: FCC<SelectThemeDialogProps> = ({ open, onClose }) => {
       aria-describedby="alert-dialog-slide-description"
     >
       <h3 className="dialog-header">Lựa chọn giao diện</h3>
-      <div className="dialog-max-body my-scrollbar">
-        <div style={{ marginRight: '-10px' }}>
+      <Scrollable options={{ scrollbars: { autoHide: 'scroll' } }} className="dialog-max-body">
+        <div>
           <DialogTitle>Theo màu</DialogTitle>
-          <div className="flex flex-wrap color-picker-group">
+          <div className="grid grid-cols-2 md:grid-cols-6 gap-5 px-6">
             {COLOR_THEME_LIST.map((e, i) => (
               <div key={e.id} onClick={() => selectedTheme(e, i)} className="color-picker-box cs-pointer relative">
                 {e.id === currentSelectedTheme && <div className="text-picker">Đang chọn</div>}
@@ -60,19 +61,19 @@ const SelectThemeDialog: FCC<SelectThemeDialogProps> = ({ open, onClose }) => {
             ))}
           </div>
           <DialogTitle>Theo nhân vật</DialogTitle>
-          <div className="flex flex-wrap color-picker-group gr-av">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 px-6">
             {CHAR_THEME_LIST.map((e, i) => (
-              <div className="avatar-background-picker relative" onClick={() => selectedTheme(e, i)} key={e.id}>
+              <button className="relative" onClick={() => selectedTheme(e, i)} key={e.id}>
                 {e.id === currentSelectedTheme && <div className="text-picker">Đang chọn</div>}
-                <img src={e.avatarRef} className={e.id === currentSelectedTheme ? 'theme-selected' : ''} alt="" />
+                <img src={e.avatarRef} className={e.id === currentSelectedTheme ? 'rounded-xl theme-selected' : 'rounded-xl'} alt="" />
                 <div className="char-name">{e.name}</div>
-              </div>
+              </button>
             ))}
           </div>
         </div>
-      </div>
+      </Scrollable>
       <div className="fj-end align-items-center" style={{ minHeight: '70px', margin: '0 24px' }}>
-        <CustomButtonOutlined className="dialog-end-btn" hovercolor="B0B0B0FF" textcolor="grey" onClick={onClose} text="Đóng" />
+        <CustomButtonOutlined className="ml-3 capitalize" hovercolor="B0B0B0FF" textcolor="grey" onClick={onClose} text="Đóng" />
       </div>
     </Dialog>
   );

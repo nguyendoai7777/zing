@@ -4,19 +4,26 @@ import { useAppDispatch } from '@store/store';
 import { setCurrentLists, setCurrentSong } from '@store/slices/media-player.slice';
 import { pause, play } from '@store/slices/play-state.slice';
 import { pushOne } from '@store/slices/listened-history.slice';
-import type { SongItemProps } from '@typing';
+import type { Song } from '@typing';
 import { durationConverter, nameConverter, stopParentEvent } from '@utils';
 import { DIS_STANDOUT_SONG_LIST } from '@const';
+import { type ComponentProps, useEffect, useState } from 'react';
+import { http } from '@zing/http';
 
-const Song = (pr: SongItemProps) => {
+interface _SongEvent extends Pick<ComponentProps<'div'>, 'onClick'> {}
+
+interface SongItem extends _SongEvent {}
+interface SongItem extends Song {}
+
+const Song: FCC<SongItem> = (pr) => {
   return (
     <div className="standout-song fa-center fj-between cs-pointer" onClick={pr.onClick}>
       <div className="flex song-wrapper">
-        <Link onClick={stopParentEvent} className="main-artist text-nowrap" to={pr.mainArtist.profileUrl}>
-          {nameConverter(pr.mainArtist.name)}
+        <Link onClick={stopParentEvent} className="main-artist text-nowrap" to={pr.artistName}>
+          {pr.artistName}
         </Link>
-        —<span className="song-name name-oversize text-nowrap">{pr.songName}</span>
-        {pr.subArtist.length > 0 && (
+        —<span className="song-name name-oversize text-nowrap">{pr.name}</span>
+        {/*{pr.subArtist.length > 0 && (
           <span className="sub-art">
             (
             {pr.subArtist.map((sa, i) => (
@@ -29,14 +36,12 @@ const Song = (pr: SongItemProps) => {
             ))}
             )
           </span>
-        )}
+        )}*/}
       </div>
       <div className="tail fa-center">
-        <div className="fas-info" style={{ marginRight: '28px' }}>
-          {durationConverter(pr.songDuration)}
-        </div>
+        <div className="fas-info mr-7">{durationConverter(pr.duration)}</div>
         <div className="triangle-play" style={{ transform: 'translateY(-1px)' }}></div>
-        <div className="fas-info">{pr.listenTimes}</div>
+        <div className="fas-info">{pr.listenCount}</div>
       </div>
     </div>
   );
@@ -44,22 +49,24 @@ const Song = (pr: SongItemProps) => {
 
 export const StandoutMusic = () => {
   const dispatch = useAppDispatch();
+
+  const [songs, setSongs] = useState<Song[]>([]);
+
+  useEffect(() => {
+    http.get<Song[]>('/api/albums?type=VRM').then((c) => {
+      console.log(`@@ song list`, c.data);
+      setSongs(c.data);
+    });
+  }, []);
   return (
     <>
       <div className="standout-ms-box flex">
         <img src="https://i1.sndcdn.com/artworks-FZScX6URzWnyTa1Z-z8MRtA-t500x500.jpg" alt="" />
         <div className="aud-list">
-          {DIS_STANDOUT_SONG_LIST.map((s) => (
+          {songs.map((s) => (
             <Song
-              id={s.id}
-              url={s.url}
-              mediaUrl={s.mediaUrl}
               key={s.id}
-              songDuration={s.songDuration}
-              songName={s.songName}
-              listenTimes={s.listenTimes}
-              mainArtist={s.mainArtist}
-              subArtist={s.subArtist}
+              {...s}
               onClick={() => {
                 dispatch(pause());
                 dispatch(setCurrentSong(s));

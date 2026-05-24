@@ -6,7 +6,7 @@ import { pause, play, selectPlayState } from '@store/slices/play-state.slice.ts'
 import { selectMediaPlayer, setCurrentLists, setCurrentSong } from '@store/slices/media-player.slice.ts';
 import { pushOne } from '@store/slices/listened-history.slice.ts';
 import { onActivateEffect, saveVolumeToLocal } from '@utils';
-import type { Prettify, SongBase } from '@typing';
+import type { Prettify, Song } from '@typing';
 import { useAppDispatch, useAppSelector } from '@store/store.ts';
 import { selectLoopState, setLoop, setShuffle, type UnionLoop } from '@store/slices/loop-state.slice.ts';
 
@@ -102,7 +102,7 @@ export function usePlaybackControls() {
     }
   };
 
-  const playThisSong = (s: SongBase, e?: any) => {
+  const playThisSong = (s: Song, e?: any) => {
     if ((crSong?.id || '') === s.id) {
       dispatch(isPlaying ? pause() : play());
     } else {
@@ -114,7 +114,7 @@ export function usePlaybackControls() {
         dispatch(setCurrentLists(crListSong));
         clearTimeout(delay);
       }, 100);
-      e && onActivateEffect(e, s.artwork);
+      /*e && onActivateEffect(e, s.artwork);*/
     }
   };
 
@@ -143,7 +143,7 @@ export function usePlaybackControls() {
 
 // ─── Audio Engine (duration, time tracking, keyboard, loop behavior) ─
 
-export function useAudioEngine(crSong: SongBase | undefined, crListSong: SongBase[], mediaLoop: number, onNext: () => void) {
+export function useAudioEngine(crSong: Song | undefined, crListSong: Song[], mediaLoop: number, onNext: () => void) {
   const dispatch = useAppDispatch();
   const playSelector = useAppSelector(selectPlayState);
   const mp3Audio = document.querySelector('audio')!;
@@ -180,9 +180,13 @@ export function useAudioEngine(crSong: SongBase | undefined, crListSong: SongBas
 
   // media source sync
   useEffect(() => {
-    mp3Audio.src = crSong?.mediaUrl!;
+    mp3Audio.src = `https://pub-9243b53a21cb49b09b66fc63f662221a.r2.dev/${crSong?.url!}`;
     mp3Audio.loop = mediaLoop === 1;
-    mp3Audio.onloadeddata = () => setDuration(mp3Audio.duration || 0);
+    mp3Audio.oncanplaythrough = () => {
+      console.log(`@@ okle`);
+    };
+    setDuration(crSong?.duration || 0);
+    // mp3Audio.onloadeddata = () => setDuration(mp3Audio.duration || 0);
     mp3Audio.ontimeupdate = () => setCurrentPlayingTime(mp3Audio.currentTime);
   }, [crSong]);
 
@@ -218,8 +222,10 @@ export function useAudioEngine(crSong: SongBase | undefined, crListSong: SongBas
   useEffect(() => {
     if (playSelector.playing) {
       void mp3Audio.play();
+      console.log(`@@ audio is playing`, mp3Audio);
     } else {
       mp3Audio.pause();
+      console.log(`@@ audio is paused`);
     }
   }, [playSelector.playing]);
 
@@ -228,7 +234,7 @@ export function useAudioEngine(crSong: SongBase | undefined, crListSong: SongBas
 
 // ─── Song Name Overflow Detection ───────────────────────────────────
 
-export function useNameOverflow(crSong: SongBase | undefined) {
+export function useNameOverflow(crSong: Song | undefined) {
   const nameWrapperRef = useRef<HTMLDivElement>();
   const nameRef = useRef<HTMLDivElement>();
   const [needDoubleName, setNeedDoubleName] = useState(false);
@@ -243,8 +249,8 @@ export function useNameOverflow(crSong: SongBase | undefined) {
 // ─── Mobile Drawer / Detail Sheet ───────────────────────────────────
 
 export function useMobileDrawer(
-  crSong: SongBase | undefined,
-  crListSong: SongBase[],
+  crSong: Song | undefined,
+  crListSong: Song[],
   scrollContainerRef: RefObject<HTMLDivElement | null>,
   refs: SongRef<HTMLElement>
 ) {
@@ -340,7 +346,7 @@ export function useMobileDrawer(
 
 // ─── Song Refs ──────────────────────────────────────────────────────
 
-export function useSongRefs(crListSong: SongBase[]) {
+export function useSongRefs(crListSong: Song[]) {
   const scrollContainerRef = useRef<HTMLDivElement | null>(null);
 
   const refs = crListSong.reduce((acc: SongRef, value) => {

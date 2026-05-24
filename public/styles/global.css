@@ -69,42 +69,12 @@ a {
 .can-play {
   position: relative;
 }
-.my-scrollbar {
-  /* height: 100%;
-  overflow-y: scroll !important;
-  &::-webkit-scrollbar-track {
-    background-color: transparent;
-    border-radius: 10px;
-    visibility: hidden;
-  }
-  &::-webkit-scrollbar {
-    width: 10px;
-    background-color: transparent;
-    visibility: hidden;
-  }
-  &::-webkit-scrollbar-thumb {
-    border-radius: 8px;
-    height: 100px;
-    background-color: var(--scrollbar-color);
-    visibility: hidden;
-  }
-  &:hover {
-    &::-webkit-scrollbar-track {
-      visibility: visible;
-    }
-    &::-webkit-scrollbar {
-      visibility: visible;
-    }
-    &::-webkit-scrollbar-thumb {
-      visibility: visible;
-    }
-  }*/
+.os-scrollbar-vertical .os-scrollbar-handle {
+  background-color: var(--scrollbar-color);
 }
 .dialog-main {
   .dialog-max-body {
     max-height: calc(100% - 140px);
-    overflow-x: hidden;
-    overflow-y: auto;
   }
   .dialog-header {
     margin: 0;
@@ -119,10 +89,7 @@ a {
     background-color: var(--search-filled-bg-color);
   }
 }
-.dialog-end-btn {
-  margin-left: 12px !important;
-  text-transform: capitalize !important;
-}
+
 .icon-button-self {
   &:hover {
     background-color: var(--nav-btn-active-bg-color) !important;
@@ -464,9 +431,6 @@ a {
   }
 }
 @media screen and (max-width: 888px) {
-  .color-picker-group .color-picker-box {
-    width: calc(25% - 24px) !important;
-  }
   .list-root.fa-center {
     .remaining.album-name {
       display: none;
@@ -561,16 +525,6 @@ a {
         text-indent: 24px;
         text-align: justify;
       }
-    }
-  }
-  .color-picker-group {
-    &.gr-av {
-      .avatar-background-picker {
-        width: calc(100% / 2 - 24px) !important;
-      }
-    }
-    .color-picker-box {
-      width: calc(100% / 3 - 24px) !important;
     }
   }
   .lsb-r {

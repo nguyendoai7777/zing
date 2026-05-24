@@ -1,10 +1,10 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
-import type { SongBase } from '@typing';
+import type { Song } from '@typing';
 import { StorageKey } from '@const';
 import type { RootState } from '../store.ts';
 
 export interface ListenedHistory {
-  currentHistoryList: SongBase[];
+  currentHistoryList: Song[];
 }
 
 const currentHistoryList = JSON.parse(localStorage.getItem(StorageKey.SetHistoryList) || '[]');
@@ -21,13 +21,13 @@ export const listenedHistorySlice = createSlice({
   initialState,
   reducers: {
     removeOne: (state, { payload }: PayloadAction<string>) => {
-      const cr = JSON.parse(localStorage.getItem(StorageKey.SetHistoryList) || '[]') as SongBase[];
+      const cr = JSON.parse(localStorage.getItem(StorageKey.SetHistoryList) || '[]') as Song[];
       const index = cr.findIndex((s) => s.id === payload);
       state.currentHistoryList.splice(index, 1);
       localStorage.setItem(StorageKey.SetHistoryList, JSON.stringify(state.currentHistoryList));
     },
-    pushOne: (state, action: PayloadAction<SongBase>) => {
-      const cr = JSON.parse(localStorage.getItem(StorageKey.SetHistoryList) || '[]') as SongBase[];
+    pushOne: (state, action: PayloadAction<Song>) => {
+      const cr = JSON.parse(localStorage.getItem(StorageKey.SetHistoryList) || '[]') as Song[];
       if (cr.length <= 0) {
         cr.push(action.payload);
       } else {

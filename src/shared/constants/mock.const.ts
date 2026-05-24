@@ -1,4 +1,4 @@
-import type { GalleryInfinity, SongBase } from '@typing';
+import type { GalleryInfinity, Song } from '@typing';
 import { Mp3 } from './urls.const.ts';
 
 export const DEFAULT_VOLUME = 50;
@@ -61,7 +61,7 @@ export const DIS_RECOMMENDED_ARTIST = [
   },
 ];
 
-export const DIS_STANDOUT_SONG_LIST: SongBase[] = [
+export const DIS_STANDOUT_SONG_LIST: Song[] = [
   {
     id: Mp3.DieuToa.id,
     url: '/media/dieu-toa',
@@ -214,7 +214,7 @@ export const DIS_STANDOUT_SONG_LIST: SongBase[] = [
   },
 ];
 
-export const TOP_100_ALL: SongBase[] = [
+export const TOP_100_ALL: Song[] = [
   {
     url: '/media/trai-tim-ton-thuong',
     id: Mp3.TraiTimTonThuong.id,

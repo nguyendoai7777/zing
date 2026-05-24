@@ -3,7 +3,7 @@ import { useAppDispatch } from '@store/store';
 import { addOneToPlaylist, type PlaylistState } from '@store/slices/playlist.slice';
 import { generateSongsByAmount } from '@const';
 import { uuid } from '@utils';
-import type { SongBase } from '@typing';
+import type { Song } from '@typing';
 
 export function useSongList() {
   const song10 = generateSongsByAmount(10).map((e) => ({ ...e, key: uuid() }));
@@ -24,10 +24,10 @@ export function useSongList() {
 
 export function useSongOptionMenu() {
   const [subOptionRef, setSubOptionRef] = useState<null | HTMLElement>(null);
-  const [selectedSong, setSelectedSong] = useState<SongBase | null>(null);
+  const [selectedSong, setSelectedSong] = useState<Song | null>(null);
   const openSubOptionRef = Boolean(subOptionRef);
 
-  const onSelectSong = (e: MouseEvent<HTMLElement>, currentSong: SongBase) => {
+  const onSelectSong = (e: MouseEvent<HTMLElement>, currentSong: Song) => {
     setSubOptionRef(e.currentTarget);
     setSelectedSong(currentSong);
   };
@@ -48,7 +48,7 @@ export function usePlaylistDialog() {
   const openCreatePlaylist = () => setCreatePlaylist(true);
   const closeCreatePlaylist = () => setCreatePlaylist(false);
 
-  const addOneSongToPlaylist = (song: SongBase, parentId: string) => {
+  const addOneSongToPlaylist = (song: Song, parentId: string) => {
     dispatch(addOneToPlaylist({ song, parentId }));
   };
 

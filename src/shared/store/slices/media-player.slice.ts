@@ -1,11 +1,11 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
-import type { SongBase } from '@typing';
+import type { Song } from '@typing';
 import { StorageKey } from '@const';
 import type { RootState } from '../store.ts';
 
 export interface CurrentSong {
-  currentSong?: SongBase;
-  currentList: SongBase[];
+  currentSong?: Song;
+  currentList: Song[];
 }
 
 const currentSongInit = localStorage.getItem(StorageKey.SetCurrentSong);
@@ -26,12 +26,12 @@ export const mediaPlayerSlice = createSlice({
     clear: (state) => {
       state.currentSong = undefined;
     },
-    setCurrentSong: (state, action: PayloadAction<SongBase>) => {
+    setCurrentSong: (state, action: PayloadAction<Song>) => {
       state.currentSong = action.payload;
       /// dispatch(pushOne(action.payload));
       localStorage.setItem(StorageKey.SetCurrentSong, JSON.stringify(action.payload));
     },
-    setCurrentLists: (state, action: PayloadAction<SongBase[]>) => {
+    setCurrentLists: (state, action: PayloadAction<Song[]>) => {
       state.currentList = action.payload;
       localStorage.setItem(StorageKey.SetCurrentListSong, JSON.stringify(action.payload));
     },

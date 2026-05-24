@@ -23,20 +23,20 @@ export const MediaPlayer = () => {
         <div className="mp-left fa-center">
           {crSong && (
             <>
-              <img className="song-thumb" src={crSong?.artwork} alt="" title="thumbnail" />
+              <img className="song-thumb" src="https://i1.sndcdn.com/artworks-FZScX6URzWnyTa1Z-z8MRtA-t500x500.jpg" alt="" title="thumbnail" />
               <div className="info-group">
-                <Link className="text-decoration-none w-fit" to={crSong?.mainArtist.profileUrl || ''}>
-                  <div className="gb-artist-name text-nowrap w-fit">{nameConverter(crSong?.mainArtist.name)}</div>
+                <Link className="text-decoration-none w-fit" to={crSong?.artistId}>
+                  <div className="gb-artist-name text-nowrap w-fit">{nameConverter(crSong?.artistName)}</div>
                 </Link>
                 <div className={`name-wrapper ${needDoubleName ? 'auto-text' : ''}`} ref={nameWrapperRef}>
                   <Link to={`/s/${crSong.id}`} className="text-decoration-none flex">
                     <div className="gb-song-name text-nowrap w-fit" ref={nameRef}>
-                      {crSong?.songName}
+                      {crSong?.name}
                     </div>
-                    {needDoubleName && <div className="gb-song-name text-nowrap w-fit">&nbsp;&nbsp;&nbsp;&nbsp;{crSong?.songName}</div>}
+                    {needDoubleName && <div className="gb-song-name text-nowrap w-fit">&nbsp;&nbsp;&nbsp;&nbsp;{crSong?.name}</div>}
                   </Link>
                 </div>
-                <div className="flex ">
+                {/*<div className="flex ">
                   {crSong?.subArtist.map((e) => (
                     <div key={e.id} className="gb-sub-name divider-x text-nowrap">
                       <Link className="text-decoration-none gb-sub-artist-name text-nowrap" to={e.profileUrl}>
@@ -45,7 +45,7 @@ export const MediaPlayer = () => {
                       <span className="div-x">&nbsp;x&nbsp;</span>
                     </div>
                   ))}
-                </div>
+                </div>*/}
               </div>
             </>
           )}
@@ -127,7 +127,7 @@ export const MediaPlayer = () => {
         <div className="info-nav">
           <div className="flex align-items-center info-detail" onClick={toggleDrawer(true)}>
             <div className="flex align-items-center texting">
-              <div className="s-name">{crSong?.songName}</div>
+              <div className="s-name">{crSong?.name}</div>
             </div>
             <div className={`actions${crSong ? '' : ' disable-event-all'}`}>
               <ButtonBase
@@ -187,7 +187,7 @@ export const MediaPlayer = () => {
                 <div className={`current-song-detail relative${showBody ? ' display-lyric' : ''}`}>
                   <img
                     onClick={toggleLyric}
-                    src={crSong?.artwork}
+                    src="https://i1.sndcdn.com/artworks-FZScX6URzWnyTa1Z-z8MRtA-t500x500.jpg"
                     style={{
                       borderRadius: '10px',
                       transition: '.2s',
@@ -197,19 +197,19 @@ export const MediaPlayer = () => {
                     alt=""
                   />
                   <div className={`current-playing-info${showBody ? ' show-lyrics' : ''}`}>
-                    <div className="cur-sname">{crSong?.songName}</div>
-                    <div className="ar-name">{nameConverter(crSong?.mainArtist.name || '')}</div>
+                    <div className="cur-sname">{crSong?.name}</div>
+                    <div className="ar-name">{nameConverter(crSong?.artistName || '')}</div>
                   </div>
                 </div>
               </div>
               {!showBody ? (
                 <>
-                  <div className="cur-sname">{crSong?.songName}</div>
-                  <div className="ar-name">{nameConverter(crSong?.mainArtist.name)}</div>
+                  <div className="cur-sname">{crSong?.name}</div>
+                  <div className="ar-name">{nameConverter(crSong?.artistName)}</div>
                 </>
               ) : (
                 <div className="lyric-list">
-                  <div className={displayLyric ? 'd-block' : 'd-none'} style={{ padding: '6px 0 12px 0' }}>
+                  {/*<div className={displayLyric ? 'd-block' : 'd-none'} style={{ padding: '6px 0 12px 0' }}>
                     {(crSong?.lyric || []).map((e, i) => (
                       <div
                         className={`lyric-line${(currentPlayingTime >= e.time && currentPlayingTime <= ((crSong?.lyric || [])[i + 1] || (crSong?.lyric || [])[i]).time) || 0 ? ' on-the-way' : ''}`}
@@ -218,7 +218,7 @@ export const MediaPlayer = () => {
                         {e.text}
                       </div>
                     ))}
-                  </div>
+                  </div>*/}
                   <div
                     className={`mb-t100 listened-list ${displayCurrentList ? 'd-block' : 'd-none'}`}
                     style={{ padding: `6px ${isAppleFk() ? 24 : 14}px 12px 0` }}
@@ -228,11 +228,8 @@ export const MediaPlayer = () => {
                         isMobile={true}
                         ref={refs[e.id]}
                         key={e.id}
-                        id={e.id}
-                        artwork={e.artwork}
-                        url={e.url}
-                        mainArtist={e.mainArtist}
-                        songName={e.songName}
+                        artwork="https://i1.sndcdn.com/artworks-FZScX6URzWnyTa1Z-z8MRtA-t500x500.jpg"
+                        {...e}
                         onClick={(ev) => playThisSong(e, ev)}
                         isPlaying={isPlaying && e.id === crSong?.id}
                       />

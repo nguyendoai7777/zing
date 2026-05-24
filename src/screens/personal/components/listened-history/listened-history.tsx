@@ -5,7 +5,7 @@ import { Menu, MenuItem } from '@mui/material';
 import { addOneToPlaylist, type PlaylistState } from '@store/slices/playlist.slice';
 import { pause, play, selectPlayState } from '@store/slices/play-state.slice';
 import { selectMediaPlayer, setCurrentLists, setCurrentSong } from '@store/slices/media-player.slice';
-import type { SongBase } from '@typing';
+import type { Song } from '@typing';
 import { onActivateEffect } from '@utils';
 import { StorageKey } from '@const';
 import { ListenedSongItem } from '../listened-song-item.tsx';
@@ -16,7 +16,7 @@ export const ListenedHistory = () => {
   const [subOptionRef, setSubOptionRef] = useState<null | HTMLElement>(null);
   const [subOptionActive, setSubOptionActive] = useState(false);
   const [createPlaylist, setCreatePlaylist] = useState(false);
-  const [selectedSong, setSelectedSong] = useState<SongBase | null>(null);
+  const [selectedSong, setSelectedSong] = useState<Song | null>(null);
   const [playlist, setPlaylist] = useState<PlaylistState[]>([]);
 
   const { currentHistoryList } = useAppSelector(selectListenedList);
@@ -27,7 +27,7 @@ export const ListenedHistory = () => {
   const openOptionRef = Boolean(optionRef);
   const openSubOptionRef = Boolean(subOptionRef);
 
-  const onSelectSong = (e: MouseEvent<HTMLButtonElement>, currentSong: SongBase) => {
+  const onSelectSong = (e: MouseEvent<HTMLButtonElement>, currentSong: Song) => {
     setOptionRef(e.currentTarget);
     setSelectedSong(currentSong);
   };
@@ -36,7 +36,7 @@ export const ListenedHistory = () => {
     setSelectedSong(null);
   };
 
-  const playThisSong = (s: SongBase, e?: any) => {
+  const playThisSong = (s: Song, e?: any) => {
     if ((currentSong?.id || '') === s.id) {
       dispatch(playing ? pause() : play());
     } else {
@@ -52,7 +52,7 @@ export const ListenedHistory = () => {
     }
   };
 
-  const addOneSongToPlaylist = (song: SongBase, parentId: string) => {
+  const addOneSongToPlaylist = (song: Song, parentId: string) => {
     dispatch(addOneToPlaylist({ song, parentId }));
   };
 

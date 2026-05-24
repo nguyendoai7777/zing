@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import './song-in-dt.css';
-import type { SongBase } from '@typing';
+import type { Song } from '@typing';
 import type { ReactNode } from 'react';
 import { nameConverter } from '@utils';
 
@@ -13,7 +13,7 @@ interface CombinePropsWithBase {
   onDbClick?: () => void;
 }
 
-type Props = Partial<SongBase>;
+type Props = Partial<Song>;
 
 export const SongInDetail = (pr: Props & CombinePropsWithBase) => {
   return (

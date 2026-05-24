@@ -5,12 +5,8 @@
 html,
 * {
   font-family: 'FuzzyBubbles';
-  padding: 0;
-  box-sizing: border-box;
-  margin: 0;
   user-select: none;
   color: var(--normal-text-color);
-  scroll-behavior: smooth;
 }
 
 :root {

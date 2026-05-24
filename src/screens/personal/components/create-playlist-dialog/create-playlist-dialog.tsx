@@ -3,14 +3,14 @@ import { Dialog, FormControl, Input, InputLabel } from '@mui/material';
 import './create-playlist-dialog.css';
 import { useAppDispatch } from '@store/store';
 import { createPlaylist } from '@store/slices/playlist.slice';
-import type { SongBase } from '@typing';
+import type { Song } from '@typing';
 import { uuid } from '@utils';
 import { CustomButtonOutlined } from '@components/custom-buttom';
 
 export interface CreatePlaylistDialogProps {
   open: boolean;
   onClose: () => void;
-  currentSong?: SongBase | null;
+  currentSong?: Song | null;
 }
 
 export const CreatePlaylistDialog: FCC<CreatePlaylistDialogProps> = ({ open, onClose, currentSong }) => {
@@ -75,8 +75,8 @@ export const CreatePlaylistDialog: FCC<CreatePlaylistDialogProps> = ({ open, onC
         </div>
 
         <div className="flex flex-end" style={{ marginTop: '24px' }}>
-          <CustomButtonOutlined className="dialog-end-btn" hovercolor="B0B0B0FF" textcolor="grey" onClick={handleClose} text="Đóng" />
-          <CustomButtonOutlined className="dialog-end-btn " hovercolor="B0B0B0FF" textcolor="var(--nav-active-detective)" onClick={onCreate} text="Tạo" />
+          <CustomButtonOutlined className="ml-3 capitalize" hovercolor="B0B0B0FF" textcolor="grey" onClick={handleClose} text="Đóng" />
+          <CustomButtonOutlined className="ml-3 capitalize " hovercolor="B0B0B0FF" textcolor="var(--nav-active-detective)" onClick={onCreate} text="Tạo" />
         </div>
       </div>
     </Dialog>

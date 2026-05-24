@@ -1,11 +1,11 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
-import type { SongBase } from '@typing';
+import type { Song } from '@typing';
 import { StorageKey } from '@const';
 import { DT } from '@utils';
 import type { RootState } from '../store.ts';
 
 export interface CreateNewPlaylistPayload {
-  song?: SongBase | null;
+  song?: Song | null;
   playlistName: string;
   id: string;
 }
@@ -14,7 +14,7 @@ export interface PlaylistState {
   id: string;
   name: string;
   createAt?: string;
-  songs: SongBase[];
+  songs: Song[];
 }
 
 const PLAYLIST = JSON.parse(localStorage.getItem(StorageKey.PlayList) || '[]');
@@ -40,7 +40,7 @@ export const playlistSlice = createSlice({
       localStorage.setItem(StorageKey.PlayList, JSON.stringify(playlist));
     },
     deletePlaylist: () => {},
-    addOneToPlaylist: (state, action: PayloadAction<{ parentId: string; song: SongBase }>) => {
+    addOneToPlaylist: (state, action: PayloadAction<{ parentId: string; song: Song }>) => {
       const { parentId, song } = action.payload;
       const playlist = JSON.parse(localStorage.getItem(StorageKey.PlayList) || '[]') as PlaylistState[];
       const curPlaylists = playlist.find((playlist) => playlist.id === parentId)!;

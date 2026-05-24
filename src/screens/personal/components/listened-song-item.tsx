@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import type { MouseEvent, Ref, RefObject } from 'react';
 import { useAppSelector } from '@store/store';
 import { selectMediaPlayer } from '@store/slices/media-player.slice';
-import type { SongBase } from '@typing';
+import type { Song } from '@typing';
 import { nameConverter, stopParentEvent } from '@utils';
 import DIconButton from '@components/icon-button';
 
@@ -16,9 +16,10 @@ interface CombinePropsWithBase {
   onDoubleClick?(): void;
   mode?: 'delete' | 'small-more';
   isMobile: boolean;
+  artwork?: string;
 }
 
-type LHBProps = Omit<SongBase, 'songDuration' | 'listenTimes' | 'key' | 'index' | 'subArtist' | 'mediaUrl'>;
+type LHBProps = Omit<Song, 'songDuration' | 'listenTimes' | 'key' | 'index' | 'subArtist' | 'mediaUrl'>;
 
 export const ListenedSongItem: FCC<CombinePropsWithBase & LHBProps> = (pr) => {
   const { currentSong } = useAppSelector(selectMediaPlayer);
@@ -44,10 +45,10 @@ export const ListenedSongItem: FCC<CombinePropsWithBase & LHBProps> = (pr) => {
         </div>
         <div className="info flex flex-col">
           <Link className="text-decoration-none name text-ellipsis" to={`/s/${pr.id}`} onClick={stopParentEvent}>
-            {pr.songName}
+            {pr.name}
           </Link>
-          <Link className="base-nav artist" to={pr.mainArtist.profileUrl} onClick={stopParentEvent}>
-            {nameConverter(pr.mainArtist.name)}
+          <Link className="base-nav artist" to={pr.artistId} onClick={stopParentEvent}>
+            {nameConverter(pr.name)}
           </Link>
         </div>
       </ButtonBase>
