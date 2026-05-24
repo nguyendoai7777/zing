@@ -1,49 +1,45 @@
 import './right-sidebar.css';
 import { useEffect, useState } from 'react';
 import { ButtonBase } from '@mui/material';
-import { useAppDispatch, useAppSelector } from '@store/store.ts';
-import { selectMediaPlayer, setCurrentSong } from '@store/slices/media-player.slice.ts';
-import { pause, play, selectPlayState } from '@store/slices/play-state.slice.ts';
-import type { Song } from '@typing';
-import { pushOne } from '@store/slices/listened-history.slice.ts';
 import { SongInDetail } from '@components/song-in-dt';
+import { useAudioStore } from '@zing/zstate';
+import { Scrollable } from 'rx-scrollable';
 
 interface RightSidebarProps {
   onToggleSidebar?: (currentShow: boolean) => void;
   id?: string;
 }
 
-export function RightSidebar({ onToggleSidebar, id }: RightSidebarProps) {
-  const dispatch = useAppDispatch();
-  const { currentList, currentSong } = useAppSelector(selectMediaPlayer);
-  const { playing } = useAppSelector(selectPlayState);
+export const RightSidebar: FCC<RightSidebarProps> = ({ onToggleSidebar, id }) => {
+  // ─── LẤY STATES & ACTIONS TỪ ZUSTAND STORE ───────────────────────────
+  const currentList = useAudioStore((state) => state.currentList);
+  const currentSong = useAudioStore((state) => state.currentSong);
+  const isPlaying = useAudioStore((state) => state.isPlaying);
+  const playThisSong = useAudioStore((state) => state.playThisSong);
 
   const [expand, setExpand] = useState(false);
 
-  const playSong = (e: Song) => {
-    if (currentSong?.id === e.id) {
-      dispatch(playing ? pause() : play());
-    } else {
-      dispatch(pause());
-      dispatch(setCurrentSong(e));
-      dispatch(pushOne(e));
-      const delay = setTimeout(() => {
-        dispatch(play());
-        clearTimeout(delay);
-      }, 100);
-    }
+  // Hàm xử lý phát nhạc cực kỳ ngắn gọn nhờ logic cốt lõi đã nằm trong Store
+  const handlePlaySong = (song: (typeof currentList)[number]) => {
+    // Gọi hàm playThisSong, truyền vào bài hát được bấm.
+    // Vì đang ở Sidebar danh sách chờ nên không cần truyền tham số mảng list thứ 2 để ghi đè hàng đợi.
+    playThisSong(song);
   };
+
   const toggleExpand = () => {
     setExpand(!expand);
   };
+
   useEffect(() => {
-    onToggleSidebar && onToggleSidebar(expand);
-  }, [expand]);
+    if (onToggleSidebar) {
+      onToggleSidebar(expand);
+    }
+  }, [expand, onToggleSidebar]);
 
   return (
     <>
       <div id={id} className={`rsb-r${expand ? ' expand' : ''}`}>
-        <div className="header-pai r-head fa-center relative">
+        <div className="header-pai r-head flex items-center relative">
           Danh sách phát
           <ButtonBase className="expand-right absolute" onClick={toggleExpand}>
             <svg>
@@ -51,33 +47,28 @@ export function RightSidebar({ onToggleSidebar, id }: RightSidebarProps) {
             </svg>
           </ButtonBase>
         </div>
-        <div className="scrollable-body my-scrollbar ">
+        <Scrollable className="scrollable-body my-scrollbar">
           {(currentList || []).length > 0 ? (
             <>
-              {currentList.map((e, i) => (
+              {currentList.map((song) => (
                 <SongInDetail
-                  onDbClick={() => playSong(e)}
-                  isPlaying={playing && currentSong?.id === e.id}
-                  className={currentSong?.id === e.id ? 'playing' : ''}
-                  onClick={() => playSong(e)}
-                  key={e.id}
-                  url={e.url}
-                  id={e.id}
-                  mainArtist={e.mainArtist}
-                  subArtist={e.subArtist}
-                  artwork={e.artwork}
-                  songName={e.songName}
+                  onDbClick={() => handlePlaySong(song)}
+                  isPlaying={isPlaying && currentSong?.id === song.id}
+                  className={currentSong?.id === song.id ? 'playing' : ''}
+                  onClick={() => handlePlaySong(song)}
+                  key={song.id}
+                  {...song}
                 />
               ))}
             </>
           ) : (
-            <div>Trống</div>
+            <div className="text-center py-4 text-gray-500">Trống</div>
           )}
-        </div>
+        </Scrollable>
       </div>
       {expand && <div className="drawer-overlay" onClick={toggleExpand}></div>}
     </>
   );
-}
+};
 
 export default RightSidebar;

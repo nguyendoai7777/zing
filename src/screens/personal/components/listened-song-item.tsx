@@ -1,8 +1,6 @@
 import { ButtonBase } from '@mui/material';
 import { Link } from 'react-router-dom';
 import type { MouseEvent, Ref, RefObject } from 'react';
-import { useAppSelector } from '@store/store';
-import { selectMediaPlayer } from '@store/slices/media-player.slice';
 import type { Song } from '@typing';
 import { nameConverter, stopParentEvent } from '@utils';
 import DIconButton from '@components/icon-button';
@@ -26,7 +24,7 @@ export const ListenedSongItem: FCC<CombinePropsWithBase & LHBProps> = (pr) => {
   return (
     <div
       ref={pr.ref}
-      className={`listened-item fa-center ${pr.className ? pr.className : ''} ${currentSong?.id === pr.id ? 'selected' : ''}`}
+      className={`listened-item flex items-center ${pr.className ? pr.className : ''} ${currentSong?.id === pr.id ? 'selected' : ''}`}
       onDoubleClick={() => pr.onDoubleClick && pr.onDoubleClick()}
     >
       <ButtonBase

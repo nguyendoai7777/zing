@@ -1,81 +1,60 @@
 import './standout-music.css';
 import { Link } from 'react-router-dom';
-import { useAppDispatch } from '@store/store';
-import { setCurrentLists, setCurrentSong } from '@store/slices/media-player.slice';
-import { pause, play } from '@store/slices/play-state.slice';
-import { pushOne } from '@store/slices/listened-history.slice';
-import type { Song } from '@typing';
-import { durationConverter, nameConverter, stopParentEvent } from '@utils';
-import { DIS_STANDOUT_SONG_LIST } from '@const';
+import { durationConverter, stopParentEvent } from '@utils'; // Bỏ songFromUrl nếu store đã tự xử lý url
 import { type ComponentProps, useEffect, useState } from 'react';
 import { http } from '@zing/http';
+import { useAudioStore } from '@zing/zstate/audio';
+import type { Song } from '@typing';
 
 interface _SongEvent extends Pick<ComponentProps<'div'>, 'onClick'> {}
 
-interface SongItem extends _SongEvent {}
-interface SongItem extends Song {}
+interface SongItem extends _SongEvent, Song {
+  isPlaying: boolean;
+  currentSong: Song | null;
+}
 
-const Song: FCC<SongItem> = (pr) => {
+const SongItem: FCC<SongItem> = ({ artistName, listenCount, duration, currentSong, isPlaying, artistId, id, name, onClick }) => {
   return (
-    <div className="standout-song fa-center fj-between cs-pointer" onClick={pr.onClick}>
-      <div className="flex song-wrapper">
-        <Link onClick={stopParentEvent} className="main-artist text-nowrap" to={pr.artistName}>
-          {pr.artistName}
+    <div className={`standout-song flex justify-between items-center cursor-pointer ${currentSong?.id === id ? 'playing' : ''}`} onClick={onClick}>
+      <div className="flex lg:max-w-[70%] flex-1">
+        <Link onClick={stopParentEvent} className="main-artist whitespace-nowrap" to={artistId}>
+          {artistName}
         </Link>
-        —<span className="song-name name-oversize text-nowrap">{pr.name}</span>
-        {/*{pr.subArtist.length > 0 && (
-          <span className="sub-art">
-            (
-            {pr.subArtist.map((sa, i) => (
-              <span key={sa.id} className="divider-x text-nowrap">
-                <Link onClick={stopParentEvent} className="sub-artist" to={sa.profileUrl}>
-                  {nameConverter(sa.name)}
-                </Link>
-                <span className="div-x">&nbsp;x&nbsp;</span>
-              </span>
-            ))}
-            )
-          </span>
-        )}*/}
+        — <span className="px-2 song-name name-oversize whitespace-nowrap">{name}</span>
       </div>
-      <div className="tail fa-center">
-        <div className="fas-info mr-7">{durationConverter(pr.duration)}</div>
-        <div className="triangle-play" style={{ transform: 'translateY(-1px)' }}></div>
-        <div className="fas-info">{pr.listenCount}</div>
+      <div className="tail flex items-center">
+        <div className="fas-info mr-7">{durationConverter(duration)}</div>
+        <div className={isPlaying && currentSong?.id === id ? 'shape-bars' : 'shape-triangle'} style={{ transform: 'translateY(-1px)' }}></div>
+        <div className="fas-info">{listenCount}</div>
       </div>
     </div>
   );
 };
 
 export const StandoutMusic = () => {
-  const dispatch = useAppDispatch();
+  const { playThisSong, isPlaying, currentSong } = useAudioStore((s) => s);
 
   const [songs, setSongs] = useState<Song[]>([]);
 
   useEffect(() => {
     http.get<Song[]>('/api/albums?type=VRM').then((c) => {
-      console.log(`@@ song list`, c.data);
       setSongs(c.data);
     });
   }, []);
+
   return (
     <>
       <div className="standout-ms-box flex">
         <img src="https://i1.sndcdn.com/artworks-FZScX6URzWnyTa1Z-z8MRtA-t500x500.jpg" alt="" />
         <div className="aud-list">
           {songs.map((s) => (
-            <Song
+            <SongItem
+              isPlaying={isPlaying}
+              currentSong={currentSong}
               key={s.id}
               {...s}
               onClick={() => {
-                dispatch(pause());
-                dispatch(setCurrentSong(s));
-                dispatch(pushOne(s));
-                const delay = setTimeout(() => {
-                  dispatch(play());
-                  clearTimeout(delay);
-                }, 100);
-                dispatch(setCurrentLists(DIS_STANDOUT_SONG_LIST));
+                playThisSong(s, songs);
               }}
             />
           ))}

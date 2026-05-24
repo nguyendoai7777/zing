@@ -13,13 +13,13 @@ interface CombinePropsWithBase {
   onDbClick?: () => void;
 }
 
-type Props = Partial<Song>;
+type Props = Song;
 
 export const SongInDetail = (pr: Props & CombinePropsWithBase) => {
   return (
-    <div className={`fa-center sil ${pr.className ? pr.className : ''}`} onDoubleClick={() => pr.onDbClick && pr.onDbClick()}>
+    <div className={`flex items-center sil ${pr.className ? pr.className : ''}`} onDoubleClick={() => pr.onDbClick && pr.onDbClick()}>
       <div className="can-play" onClick={pr.onClick}>
-        <img src={pr.artwork} alt="" />
+        <img src="https://i1.sndcdn.com/artworks-000474463272-eg4f29-t500x500.jpg" alt="" />
         <div className="playable">
           <svg>
             <use href={`#${pr.isPlaying ? 'Pauseable' : 'Playable'}`} />
@@ -27,14 +27,14 @@ export const SongInDetail = (pr: Props & CombinePropsWithBase) => {
         </div>
         <div className="playable-overlay"></div>
       </div>
-      <div className="detail fj-between flex-col">
+      <div className="detail flex justify-between flex-col">
         <Link className="text-decoration-none" to={`/s/${pr.id}`}>
-          <div className="name text-ellipsis">{pr.songName}</div>
+          <div className="name line-clamp-1">{pr.name}</div>
         </Link>
-        <Link className="base-nav" to={pr.mainArtist?.profileUrl!}>
-          <div className="artist">{nameConverter(pr.mainArtist?.name || '')}</div>
+        <Link className="base-nav" to={pr.artistId}>
+          <div className="artist">{nameConverter(pr.artistName)}</div>
         </Link>
-        {pr.subArtist!.length > 0 && (
+        {/*{pr.subArtist!.length > 0 && (
           <div className="flex">
             {pr.subArtist?.map((e) => (
               <span className="sub-artist divider-x" key={e.id}>
@@ -45,7 +45,7 @@ export const SongInDetail = (pr: Props & CombinePropsWithBase) => {
               </span>
             ))}
           </div>
-        )}
+        )}*/}
       </div>
       {pr.children && pr.children}
     </div>

@@ -12,7 +12,7 @@ export const PersonalScreen = () => {
     <>
       <div className="my-scrollbar ml-scroll-left personal">
         <div className="ml-scroll-right">
-          <div className="header-pai fj-between align-items-center">
+          <div className="header-pai flex justify-between items-center">
             Đã nghe gần đây
             <ButtonBase className="heading-button">
               <div className="text">Xem Thêm</div>
@@ -22,7 +22,7 @@ export const PersonalScreen = () => {
             </ButtonBase>
           </div>
           <ListenedHistory />
-          <div className="header-pai fj-between align-items-center">
+          <div className="header-pai flex justify-between items-center">
             PlayList
             <ButtonBase className="heading-button" onClick={() => setCreatePlaylist(true)}>
               <div className="text">Tạo mới</div>

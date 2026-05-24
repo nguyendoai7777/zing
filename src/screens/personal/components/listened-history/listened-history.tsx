@@ -1,10 +1,5 @@
 import { type MouseEvent, useEffect, useState } from 'react';
-import { useAppDispatch, useAppSelector } from '@store/store';
-import { pushOne, removeOne, selectListenedList } from '@store/slices/listened-history.slice';
 import { Menu, MenuItem } from '@mui/material';
-import { addOneToPlaylist, type PlaylistState } from '@store/slices/playlist.slice';
-import { pause, play, selectPlayState } from '@store/slices/play-state.slice';
-import { selectMediaPlayer, setCurrentLists, setCurrentSong } from '@store/slices/media-player.slice';
 import type { Song } from '@typing';
 import { onActivateEffect } from '@utils';
 import { StorageKey } from '@const';

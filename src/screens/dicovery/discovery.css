@@ -1,5 +1,4 @@
 .slide-gallery {
-  margin-top: 25px;
   .touching .slide-item {
     cursor: grabbing !important;
   }

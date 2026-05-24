@@ -1,4 +1,4 @@
-import { SongBase } from '@models/media.model';
+import type { Song } from './song.types';
 
 export interface ArtisBaseInfo {
   id: string;
@@ -10,7 +10,7 @@ export interface ArtisProfile extends ArtisBaseInfo {
   description: string;
   artwork: string;
   subArtwork?: string;
-  songs: SongBase[];
+  songs: Song[];
   birthdate: string;
   nativePlace: string;
   realName: string;

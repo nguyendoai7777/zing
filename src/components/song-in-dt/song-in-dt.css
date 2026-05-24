@@ -22,7 +22,7 @@
     height: 70px;
   }
   .detail {
-    flex: 1;
+    max-width: calc(100% - 70px);
     padding: 12px;
     .name {
       font-size: 14px;
@@ -35,9 +35,7 @@
     }
   }
 }
-.playing {
-  background: var(--playing-bg);
-}
+
 .playable-overlay {
   position: absolute;
   inset: 0;

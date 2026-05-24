@@ -1,12 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import './playlist.css';
 import { useParams } from 'react-router-dom';
 import { ButtonBase } from '@mui/material';
-import { useAppDispatch, useAppSelector } from '@store/store';
-import { type PlaylistState, removeOneToPlaylist, selectPlaylist } from '@store/slices/playlist.slice';
-import { pause, play, selectPlayState } from '@store/slices/play-state.slice';
-import { selectMediaPlayer, setCurrentLists, setCurrentSong } from '@store/slices/media-player.slice';
-import { pushOne } from '@store/slices/listened-history.slice';
 import type { ListLayoutType } from '@typing';
 import { StorageKey } from '@const';
 import { PlayingDecorator } from '@components/playing-decorator';
@@ -38,8 +33,8 @@ export const PlaylistScreen = () => {
     <div className="body-cc60">
       {playlist ? (
         <>
-          <div className="header-pai fj-between align-items-center">
-            {playlist.name} <i className="intro">{playlist.createAt}</i>
+          <div className="header-pai justify-between items-center">
+            {playlist.name} <i className="text-xs opacity-65">{playlist.createAt}</i>
           </div>
           <div className="flex justify-content-end">
             <ButtonBase className={`change-layout-btn ${layout === 'grid' ? 'active' : ''}`} onClick={() => changeLayout('grid')}>

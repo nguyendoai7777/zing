@@ -3,4 +3,5 @@
 /*@import 'swiper/swiper-bundle.min.css';*/
 
 @theme {
+  --color-tx-normal: var(--normal-text-color);
 }

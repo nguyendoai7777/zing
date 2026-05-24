@@ -17,6 +17,13 @@
     justify-content: space-between;
   }
 }
+.main-artist {
+  padding-right: 8px;
+  color: var(--standout-main-atist);
+}
+.sub-artist {
+  color: var(--standout-main-atist);
+}
 .standout-song {
   color: var(--song-standout-reflect-color);
   padding: 10px 7px;
@@ -34,13 +41,6 @@
   * {
     text-decoration: none !important;
   }
-  .main-artist {
-    padding-right: 8px;
-    color: var(--standout-main-atist);
-  }
-  .sub-artist {
-    color: var(--standout-main-atist);
-  }
   .main-artist,
   .sub-artist {
     &:hover {
@@ -48,7 +48,6 @@
     }
   }
   .song-name {
-    padding: 0 8px;
     color: var(--standout-song-name);
   }
   .fas-info {
@@ -56,14 +55,6 @@
     color: var(--standout-main-atist);
     min-width: 45px;
     text-align: right;
-  }
-  .triangle-play {
-    width: 10px;
-    height: 9px;
-    border-top: 5px solid transparent;
-    border-bottom: 5px solid transparent;
-    border-left: 10px solid var(--normal-text-color);
-    border-right: 5px solid transparent;
   }
 }
 .divider-x:last-child .div-x {

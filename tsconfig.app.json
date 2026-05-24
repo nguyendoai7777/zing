@@ -32,7 +32,9 @@
       "@root-routes": ["src/app/app.routing.ts"],
       "@components/*": ["src/components/*"],
       "@pages/*": ["src/screens/*"],
-      "@zing/http": ["src/shared/io"]
+      "@zing/http": ["src/shared/io"],
+      "@zing/zstate/*": ["src/shared/zustand/*"],
+      "@zing/zstate": ["src/shared/zustand"]
     }
   },
   "include": ["src"]

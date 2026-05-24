@@ -1,9 +1,3 @@
-#recommended-f {
-  display: none;
-}
-a {
-  width: fit-content;
-}
 #root {
   background-size: 1920px;
   background-position: 26px 10px;
@@ -22,13 +16,7 @@ a {
     color: #fff !important;
   }
 }
-.intro {
-  font-size: 11px;
-  opacity: 0.65;
-}
-.lyric-line {
-  padding: 2px 0;
-}
+
 .active-base-controller {
   .MuiFormLabel-root {
     color: var(--normal-text-color);
@@ -111,7 +99,9 @@ a {
 .ml-scroll-left {
   margin-left: 60px;
 }
-
+.playing {
+  background: var(--playing-bg);
+}
 .ml-scroll-right {
   margin-right: 50px;
 }
@@ -128,7 +118,47 @@ a {
 .r-invalid {
   color: #d32f2f;
 }
-
+.shape-triangle {
+  width: 16px;
+  height: 16px;
+  position: relative;
+  &:after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-30%, -50%);
+    width: 10px;
+    height: 9px;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-left: 10px solid var(--normal-text-color);
+    border-right: 5px solid transparent;
+  }
+}
+.shape-bars {
+  width: 16px;
+  height: 16px;
+  position: relative;
+  &:after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 10px;
+    height: 10px;
+    background: linear-gradient(
+      to right,
+      var(--normal-text-color) 0%,
+      var(--normal-text-color) 30%,
+      /* Vạch 1 chiếm 30% */ transparent 30%,
+      transparent 70%,
+      /* Khoảng trống ở giữa */ var(--normal-text-color) 70%,
+      var(--normal-text-color) 100% /* Vạch 2 chiếm 30% */
+    );
+  }
+}
 .gb-song-name {
   font-size: 14px;
   color: var(--song-standout-reflect-color);
@@ -298,11 +328,6 @@ a {
       width: calc(75% - 24px);
     }
   }
-  .standout-song {
-    .song-wrapper {
-      max-width: 70%;
-    }
-  }
 }
 
 @media screen and (max-width: 1616px) {
@@ -324,11 +349,6 @@ a {
   }
 }
 @media screen and (max-width: 1462px) {
-  .standout-song {
-    .sub-art {
-      display: none;
-    }
-  }
   .list-root .main .remaining {
     &.album-name {
       margin-left: auto;
@@ -420,7 +440,7 @@ a {
       display: none;
     }
   }
-  .list-root.fa-center {
+  .list-root {
     .order,
     .status {
       display: none;
@@ -431,7 +451,7 @@ a {
   }
 }
 @media screen and (max-width: 888px) {
-  .list-root.fa-center {
+  .list-root {
     .remaining.album-name {
       display: none;
     }

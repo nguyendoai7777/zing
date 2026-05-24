@@ -4,10 +4,6 @@ import { ButtonBase } from '@mui/material';
 import { useEffect, useRef, useState } from 'react';
 import type { MouseEvent, ReactElement, Ref } from 'react';
 import type { MousePosition, Song } from '@typing';
-import { selectMediaPlayer, setCurrentSong } from '@store/slices/media-player.slice';
-import { pause, play, selectPlayState } from '@store/slices/play-state.slice';
-import { useAppDispatch, useAppSelector } from '@store/store';
-import { pushOne } from '@store/slices/listened-history.slice';
 import { durationConverter, nameConverter } from '@utils';
 
 export interface List100Props {
@@ -86,15 +82,15 @@ export const List100 = ({ onAdd, song, onPlay, index, onContextMenu, isAtTop, cl
     <>
       <div
         ref={ref}
-        className={`list-root fa-center${className ? ' ' + className : ''}${currentSong?.id === song.id ? ' is-playing' : ''}`}
+        className={`list-root flex items-center ${className ? className : ''}${currentSong?.id === song.id ? ' is-playing' : ''}`}
         onDoubleClick={selectedPlayingSong}
       >
-        <div className={`order fa-center justify-content-center ${index === 1 || index === 2 || index === 3 ? `order-${index}` : ''}`}>
+        <div className={`order flex items-center justify-center ${index === 1 || index === 2 || index === 3 ? `order-${index}` : ''}`}>
           <span>{index}</span>
         </div>
         <div className="status flex-center-center">--</div>
 
-        <div className="main fa-center">
+        <div className="main flex items-center">
           <ButtonBase className="thumbnail relative" onClick={selectedPlayingSong}>
             <img src={song.artwork} alt="" />
             <div className="overlay absolute"></div>
@@ -115,11 +111,11 @@ export const List100 = ({ onAdd, song, onPlay, index, onContextMenu, isAtTop, cl
               {song.songName}
             </Link>
             <div className="flex">
-              <Link to={song.mainArtist.profileUrl} className="ar-name base-nav text-nowrap">
+              <Link to={song.mainArtist.profileUrl} className="ar-name base-nav whitespace-nowrap">
                 {nameConverter(song.mainArtist.name)}
               </Link>
               {song.subArtist.length > 0 && (
-                <span className="ar-name text-nowrap">
+                <span className="ar-name whitespace-nowrap">
                   &nbsp;(
                   {song.subArtist.map((e) => (
                     <span className="divider-x" key={e.id}>
@@ -139,7 +135,7 @@ export const List100 = ({ onAdd, song, onPlay, index, onContextMenu, isAtTop, cl
               unknown name
             </Link>
           </div>
-          <div className="action flex justify-content-end align-items-center">
+          <div className="action flex justify-content-end items-center">
             <span className="duration">{durationConverter(song.songDuration)}</span>
             <ButtonBase className="button" onClick={(e) => onAdd && onAdd(e)}>
               <svg>

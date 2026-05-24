@@ -91,7 +91,7 @@ export const Visualization = () => {
 
   return (
     <div className="my-scrollbar flex s-detail justify-between blur-overlay" onScroll={getScrollPos}>
-      <PlayingDecorator className="s-info sticky-top" style={{ minWidth: '300px' }} currentsong={info} />
+      <PlayingDecorator className="s-info sticky top-0" style={{ minWidth: '300px' }} currentsong={info} />
       <div className="visualization relative  ml-scroll-right">
         <canvas
           style={{
@@ -102,11 +102,11 @@ export const Visualization = () => {
         ></canvas>
         {/*<div className="duration" style={{ width: currentTime / duration * 100 + '%' }}></div>*/}
         <div className="lyrics-box">
-          <div className={`header-pai sticky-top${needColor ? ' need-bg' : ''}`}>Lời bài hát</div>
+          <div className={`header-pai sticky top-0 ${needColor ? ' need-bg' : ''}`}>Lời bài hát</div>
           <div className="lyrics">
             {info?.lyric &&
               info?.lyric.map((e, i) => (
-                <div className="lyric-line" key={i}>
+                <div className="px-1" key={i}>
                   {e.text}
                 </div>
               ))}

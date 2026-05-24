@@ -1,8 +1,6 @@
 import { useState, type KeyboardEvent } from 'react';
 import { Dialog, FormControl, Input, InputLabel } from '@mui/material';
 import './create-playlist-dialog.css';
-import { useAppDispatch } from '@store/store';
-import { createPlaylist } from '@store/slices/playlist.slice';
 import type { Song } from '@typing';
 import { uuid } from '@utils';
 import { CustomButtonOutlined } from '@components/custom-buttom';
@@ -49,7 +47,7 @@ export const CreatePlaylistDialog: FCC<CreatePlaylistDialogProps> = ({ open, onC
   return (
     <Dialog onClose={onClose} open={open} className="popover-base create-playlist-dialog">
       <div className="d-wrapper">
-        <i className="intro">Created by yourself</i>
+        <i className="text-xs opacity-65">Created by yourself</i>
         <br />
         <div className="text-field-with-icon relative">
           <FormControl fullWidth variant="standard">
@@ -74,7 +72,7 @@ export const CreatePlaylistDialog: FCC<CreatePlaylistDialogProps> = ({ open, onC
           {invalidName && <div className="r-invalid invalid-content-input">Không được để trống</div>}
         </div>
 
-        <div className="flex flex-end" style={{ marginTop: '24px' }}>
+        <div className="flex justify-end" style={{ marginTop: '24px' }}>
           <CustomButtonOutlined className="ml-3 capitalize" hovercolor="B0B0B0FF" textcolor="grey" onClick={handleClose} text="Đóng" />
           <CustomButtonOutlined className="ml-3 capitalize " hovercolor="B0B0B0FF" textcolor="var(--nav-active-detective)" onClick={onCreate} text="Tạo" />
         </div>

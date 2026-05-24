@@ -72,7 +72,7 @@ const SelectThemeDialog: FCC<SelectThemeDialogProps> = ({ open, onClose }) => {
           </div>
         </div>
       </Scrollable>
-      <div className="fj-end align-items-center" style={{ minHeight: '70px', margin: '0 24px' }}>
+      <div className="fj-end items-center" style={{ minHeight: '70px', margin: '0 24px' }}>
         <CustomButtonOutlined className="ml-3 capitalize" hovercolor="B0B0B0FF" textcolor="grey" onClick={onClose} text="Đóng" />
       </div>
     </Dialog>
@@ -106,7 +106,7 @@ export function Navbar() {
   return (
     <>
       <div className="d-navbar flex items-center justify-center flex-1 sticky top-0 z-10" ref={navRef}>
-        <div className="fa-center nav-leading">
+        <div className="nav-leading flex items-center">
           <Link to="discovery" className="text-decoration-none back-home">
             <DIconButton shape="circle" siz="60px" cls="action-button">
               <svg className="redirect-home">
@@ -114,7 +114,7 @@ export function Navbar() {
               </svg>
             </DIconButton>
           </Link>
-          <div className={`search-box fa-center ${inpFocus && searchText ? 's_active' : ''}`}>
+          <div className={`search-box flex items-center ${inpFocus && searchText ? 's_active' : ''}`}>
             <svg className="sic absolute">
               <use href="#Search" />
             </svg>
@@ -149,7 +149,7 @@ export function Navbar() {
             {inpFocus && searchText && <div className="result-box absolute">Result</div>}
           </div>
         </div>
-        <div className="main-actions fa-center">
+        <div className="main-actions flex items-center">
           <DIconButton onClick={() => setOpenDialog(true)} shape="circle" siz="60px" cls="action-button">
             <img width="34px" src="/imgs/theme.svg" alt="" />
           </DIconButton>

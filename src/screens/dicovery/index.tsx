@@ -37,8 +37,8 @@ export const DiscoveryScreen = () => {
     }, 2000);
   }, []);
   return (
-    <Scrollable options={{ scrollbars: { autoHide: 'scroll' } }} defer className="my-scrollbar">
-      <div className="slide-gallery relative ml-scroll-left ml-scroll-right">
+    <Scrollable options={{ scrollbars: { autoHide: 'scroll' } }} defer>
+      <div className="slide-gallery mt-6 relative ml-6 ml-scroll-left md:ml-14 ">
         {gallery.length > 0 ? (
           <>
             <DIconButton
@@ -78,7 +78,7 @@ export const DiscoveryScreen = () => {
         ) : deviceWidth <= 768 ? (
           <Skeleton className="skeleton-4-slide skeleton-1-slide" animation="wave" variant="rounded" />
         ) : (
-          <div className="fj-between">
+          <div className="flex justify-between">
             <Skeleton className="skeleton-4-slide" animation="wave" variant="rounded" />
             <Skeleton className="skeleton-4-slide" animation="wave" variant="rounded" />
             <Skeleton className="skeleton-4-slide" animation="wave" variant="rounded" />
@@ -87,7 +87,7 @@ export const DiscoveryScreen = () => {
       </div>
       <div className="body-cc60">
         <div className="g-body">
-          <div className="header-pai fj-between align-items-center">
+          <div className="header-pai flex justify-between items-center">
             Nhạc Nổi Bật
             <NavButton color="var(--scrollbar-color)" text="Xem Thêm" textColor="var(--normal-text-color)" />
           </div>
@@ -106,7 +106,7 @@ export const DiscoveryScreen = () => {
           </div>
         </div>
         <div className="g-body">
-          <div className="header-pai fj-between">
+          <div className="header-pai flex justify-between">
             Nghệ Sĩ Đề Xuất
             <NavButton color="var(--scrollbar-color)" text="Xem Thêm" textColor="var(--normal-text-color)" />
           </div>

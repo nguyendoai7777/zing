@@ -11,7 +11,7 @@ export const RecommendedArtist = (pr: RecommendedArtistProps) => {
       <ButtonBase className="recommended-item relative" color="#fff">
         <img src={pr.img} alt="" />
         <div className="backdrop absolute"></div>
-        <div className="artist-name absolute text-nowrap">{pr.name}</div>
+        <div className="artist-name absolute whitespace-nowrap">{pr.name}</div>
         <div className="artist-inkbar absolute"></div>
       </ButtonBase>
     </>

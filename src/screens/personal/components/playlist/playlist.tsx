@@ -1,11 +1,6 @@
 import { Link } from 'react-router-dom';
 import { ButtonBase, Zoom } from '@mui/material';
 import './playlist.css';
-import { type PlaylistState, removeThis, selectPlaylist } from '@store/slices/playlist.slice';
-import { useAppDispatch, useAppSelector } from '@store/store';
-import { pause, play } from '@store/slices/play-state.slice';
-import { setCurrentLists, setCurrentSong } from '@store/slices/media-player.slice';
-import { pushOne } from '@store/slices/listened-history.slice';
 import { randomHexColor } from '@utils';
 import { ColourTooltip } from '@components/colour-tooltip';
 

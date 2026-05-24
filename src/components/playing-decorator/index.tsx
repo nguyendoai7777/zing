@@ -1,9 +1,6 @@
 import './playing-decorator.css';
-import { useAppDispatch, useAppSelector } from '@store/store';
-import { pause, play, selectPlayState } from '@store/slices/play-state.slice';
 import { type CSSProperties, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { selectMediaPlayer, setCurrentSong } from '@store/slices/media-player.slice';
 import type { Song } from '@typing';
 import { audioElement } from '@const';
 import { nameConverter } from '@utils';
@@ -82,7 +79,7 @@ export const PlayingDecorator = (pr: PlayingDecoratorProps) => {
         ) : null}
         <div className={`border-protected${playing && currentSong?.id === pr.currentsong?.id ? ' playing' : ''}`}></div>
       </div>
-      <div className="flex flex-col align-items-center decorator">
+      <div className="flex flex-col items-center decorator">
         <div className="dc-name">{pr.currentsong?.songName}</div>
         <Link className="dc-ar base-nav" to={pr.currentsong?.mainArtist!.profileUrl!}>
           {nameConverter(pr.currentsong?.mainArtist.name)}

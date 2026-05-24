@@ -1,7 +1,5 @@
 import './top-100.css';
 import { ButtonBase, Menu, MenuItem } from '@mui/material';
-import { useAppDispatch } from '@store/store';
-import { setCurrentLists } from '@store/slices/media-player.slice';
 import { List100 } from './components/list/list.tsx';
 import { Gallery } from './components/gallery/gallery.tsx';
 import { CreatePlaylistDialog } from '../personal/components/create-playlist-dialog/create-playlist-dialog.tsx';
@@ -24,7 +22,7 @@ export const Top100Screen = () => {
               <List100 key={e.key} index={i + 1} song={e} onPlay={() => dispatch(setCurrentLists(songs))} onAdd={(ev) => onSelectSong(ev, e)} />
             ))}
           </div>
-          <div className="flex justify-content-center">
+          <div className="flex justify-center">
             <ButtonBase className="load-btn" onClick={toggleMount}>
               {mount ? 'Thu Gọn' : 'Xem 100'}
             </ButtonBase>

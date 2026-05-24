@@ -1,6 +1,4 @@
 import { type MouseEvent, useEffect, useState } from 'react';
-import { useAppDispatch } from '@store/store';
-import { addOneToPlaylist, type PlaylistState } from '@store/slices/playlist.slice';
 import { generateSongsByAmount } from '@const';
 import { uuid } from '@utils';
 import type { Song } from '@typing';

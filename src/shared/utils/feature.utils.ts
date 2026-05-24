@@ -43,10 +43,7 @@ export const saveVolumeToLocal = (val: number) => {
 };
 
 export const uuid = () => {
-  const temp_url = URL.createObjectURL(new Blob());
-  const uuid = temp_url.toString();
-  URL.revokeObjectURL(temp_url);
-  return uuid.substring(uuid.lastIndexOf('/') + 1); // remove prefix (e.g. blob:null/, blob:www.test.com/, ...)
+  return crypto.randomUUID().replace(/-/g, '');
 };
 
 export const DT = {
@@ -68,3 +65,5 @@ export const randomHexColor = () => {
 export const injectHTML = (html?: string) => ({
   __html: html || '',
 });
+
+export const dynamicVolumeIcon = (volume: number) => 'Volume' + (volume === 0 ? 'Mute' : volume < 30 ? 'Min' : volume < 75 ? 'Medium' : 'Max');

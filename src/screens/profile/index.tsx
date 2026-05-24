@@ -1,9 +1,6 @@
 import { type MouseEvent, useEffect, useState } from 'react';
 import './profile.css';
 import { useParams } from 'react-router-dom';
-import { useAppDispatch } from '@store/store';
-import { setCurrentLists } from '@store/slices/media-player.slice';
-import { addOneToPlaylist, type PlaylistState } from '@store/slices/playlist.slice';
 import { Menu, MenuItem } from '@mui/material';
 import type { ArtisProfile, Song } from '@typing';
 import { PROFILES } from '@const';
@@ -56,7 +53,7 @@ export const Profile = () => {
       <div className="my-scrollbar np-ps flex detail-info">
         {profile ? (
           <>
-            <div style={{ top: '15px' }} className="profile-col-left information sticky-top">
+            <div style={{ top: '15px' }} className="profile-col-left information sticky top-0">
               <div className="artwork relative">
                 <img src={profile?.artwork} alt="" />
                 <div className="decorator-line-root" style={{ background: `linear-gradient(0deg, transparent 0%, hsl(${hue},90%,50%) 45%)` }}></div>
@@ -74,7 +71,7 @@ export const Profile = () => {
             <div className="profile-col-right ml-scroll-right">
               <div className="description">{profile?.description}</div>
               <div className="profile-songs">
-                <div className="sub-header-pai">Bài hát</div>
+                <div className="font-bold text-tx-normal mt-6 text-lg mb-3">Bài hát</div>
                 {(profile?.songs.length || 0) > 0 &&
                   (profile?.songs || []).map((e) => (
                     <List100
@@ -88,7 +85,7 @@ export const Profile = () => {
               </div>
             </div>
             <div className="mb-personal">
-              <div className="sub-header-pai">Bài hát</div>
+              <div className="font-bold text-tx-normal mt-6 text-lg mb-3">Bài hát</div>
               {(profile?.songs.length || 0) > 0 &&
                 (profile?.songs || []).map((e) => (
                   <List100
