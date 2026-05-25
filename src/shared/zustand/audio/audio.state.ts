@@ -13,9 +13,8 @@ export const useAudioStore = create<AudioState>()(
       isPlaying: false,
       duration: 0,
       currentTime: 0,
-      songsData: [],
+      songList: [],
       currentList: [],
-
       currentSong: null,
       queueIds: [],
       volume: DEFAULT_VOLUME,
@@ -68,14 +67,16 @@ export const useAudioStore = create<AudioState>()(
       },
 
       setSongsData: (songs) => {
-        set({ songsData: songs });
+        set({
+          songList: songs,
+        });
         get().syncQueue();
       },
 
       syncQueue: () => {
-        const { songsData, queueIds } = get();
-        if (songsData.length === 0 || queueIds.length === 0) return;
-        const fullList = queueIds.map((id) => songsData.find((s) => s.id === id)).filter((s): s is Song => !!s);
+        const { songList, queueIds } = get();
+        if (songList.length === 0 || queueIds.length === 0) return;
+        const fullList = queueIds.map((id) => songList.find((s) => s.id === id)).filter((s): s is Song => !!s);
         set({ currentList: fullList });
       },
 
@@ -197,6 +198,11 @@ export const useAudioStore = create<AudioState>()(
         set((state) => ({
           shuffle: !state.shuffle,
         })),
+      removeSongFromQueue(song) {
+        const { currentList } = get();
+        const list = currentList.filter((s) => s.id !== song.id);
+        set({ currentList: list });
+      },
     }),
     {
       name: 'audio-player-storage',

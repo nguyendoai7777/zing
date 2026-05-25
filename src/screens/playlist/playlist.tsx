@@ -6,21 +6,14 @@ import type { ListLayoutType } from '@typing';
 import { StorageKey } from '@const';
 import { PlayingDecorator } from '@components/playing-decorator';
 import { SongInDetail } from '@components/song-in-dt';
+import { useAudioStore } from '@zing/zstate';
+import XSvg from '@components/svg/svg';
 
 export const PlaylistScreen = () => {
-  const { playlistId } = useParams();
-  const dispatch = useAppDispatch();
-  const playlistSelector = useAppSelector(selectPlaylist);
-  const { playing } = useAppSelector(selectPlayState);
-  const { currentList, currentSong } = useAppSelector(selectMediaPlayer);
-  const [playlist, setPlaylist] = useState<PlaylistState | undefined>();
-  const [layout, setLayout] = useState<ListLayoutType>((localStorage.getItem(StorageKey.PlayListLayout) as ListLayoutType) || 'grid');
+  const { currentList, currentSong, isPlaying: playing, playThisSong, removeSongFromQueue } = useAudioStore((s) => s);
 
-  useEffect(() => {
-    const rawPlaylist = JSON.parse(localStorage.getItem(StorageKey.PlayList) || '[]') as PlaylistState[];
-    const playlist = rawPlaylist.find((e) => e.id === playlistId);
-    setPlaylist(playlist);
-  }, [playlistSelector]);
+  const [playlist, setPlaylist] = useState();
+  const [layout, setLayout] = useState<ListLayoutType>((localStorage.getItem(StorageKey.PlayListLayout) as ListLayoutType) || 'grid');
 
   const changeLayout = (type: ListLayoutType) => {
     setLayout(type);
@@ -34,7 +27,8 @@ export const PlaylistScreen = () => {
       {playlist ? (
         <>
           <div className="header-pai justify-between items-center">
-            {playlist.name} <i className="text-xs opacity-65">{playlist.createAt}</i>
+            PlaylistName
+            {/*{playlist.name} <i className="text-xs opacity-65">{playlist.createAt}</i>*/}
           </div>
           <div className="flex justify-content-end">
             <ButtonBase className={`change-layout-btn ${layout === 'grid' ? 'active' : ''}`} onClick={() => changeLayout('grid')}>
@@ -49,41 +43,22 @@ export const PlaylistScreen = () => {
             </ButtonBase>
           </div>
           <div className={`flex playlist-list ${layout}`}>
-            {layout === 'list' && <PlayingDecorator className="decorate-root" currentSong={currentSong} />}
-            {playlist.songs.length > 0 ? (
+            {layout === 'list' && currentSong && <PlayingDecorator className="decorate-root" currentSong={currentSong} />}
+            {currentList.length > 0 ? (
               <div className="flex layout-controller">
-                {playlist.songs.map((e) => (
-                  <div className="relative sil-item" key={e.id}>
+                {currentList.map((song) => (
+                  <div className="relative sil-item" key={song.id}>
                     <SongInDetail
-                      className={currentSong?.id === e.id ? 'playing' : ''}
-                      isPlaying={playing && currentSong?.id === e.id}
-                      subArtist={e.subArtist}
-                      listenTimes={e.listenTimes}
-                      songDuration={e.songDuration}
-                      artwork={e.artwork}
-                      url={e.url}
-                      mainArtist={e.mainArtist}
-                      songName={e.songName}
-                      onDelete={() => dispatch(removeOneToPlaylist({ childId: e.id, parentId: playlistId! }))}
+                      className={currentSong?.id === song.id ? 'playing' : ''}
+                      isPlaying={playing && currentSong?.id === song.id}
+                      {...song}
+                      onDelete={() => removeSongFromQueue(song)}
                       onClick={() => {
-                        if (currentSong?.id === e.id) {
-                          dispatch(playing ? pause() : play());
-                        } else {
-                          dispatch(pause());
-                          dispatch(setCurrentSong(e));
-                          dispatch(pushOne(e));
-                          const delay = setTimeout(() => {
-                            dispatch(play());
-                            dispatch(setCurrentLists(playlist.songs));
-                            clearTimeout(delay);
-                          }, 101);
-                        }
+                        playThisSong(song);
                       }}
                     >
-                      <ButtonBase className="delete-button" onClick={() => dispatch(removeOneToPlaylist({ childId: e.id, parentId: playlistId! }))}>
-                        <svg>
-                          <use href="#Delete" />
-                        </svg>
+                      <ButtonBase className="delete-button" onClick={() => removeSongFromQueue(song)}>
+                        <XSvg src="Delete" />
                       </ButtonBase>
                     </SongInDetail>
                   </div>

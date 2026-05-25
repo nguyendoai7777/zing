@@ -6,10 +6,10 @@ export interface AudioState {
   isPlaying: boolean;
   duration: number;
   currentTime: number;
-  songsData: Song[]; // Kho 150-300 bài gốc tải về từ API
+  songList: Song[]; // Kho 150-300 bài gốc tải về từ API
   currentList: Song[]; // Danh sách bài hát đang phát thực tế dạng Object đầy đủ
 
-  // --- States Cấu hình (Được tự động Persist xuống LocalStorage) ---
+  // --- States  Persist xuống
   currentSong: Song | null; // Lưu thẳng nguyên Object bài hiện tại để hiển thị UI tức thì khi F5
   queueIds: number[]; // Chỉ lưu mảng ID của danh sách chờ để tối ưu dung lượng
   volume: number; // Thang âm lượng từ 0 - 100
@@ -42,5 +42,8 @@ export interface AudioState {
   toggleLoop(): void;
 
   toggleShuffle(): void;
+
   setupAudioListeners(): void;
+
+  removeSongFromQueue(song: Song): void;
 }

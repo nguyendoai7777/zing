@@ -1,3 +1,7 @@
+export interface ArtistBase {
+  id: string;
+  name: string;
+}
 export interface Song {
   id: number;
   name: string;
@@ -8,4 +12,5 @@ export interface Song {
   artistName: string;
   url: string;
   createdAt: string;
+  subArtists: ArtistBase[];
 }
