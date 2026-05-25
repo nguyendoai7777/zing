@@ -21,7 +21,7 @@ export const Visualization = () => {
 
   let hue = 0;
   const getInfo = () => {
-    const currentSong = TOP_100_ALL.find((e) => e.id === songId);
+    const currentSong = TOP_100_ALL.find((e) => e.id == Number(songId));
     setInfo(currentSong);
   };
 
@@ -91,7 +91,7 @@ export const Visualization = () => {
 
   return (
     <div className="my-scrollbar flex s-detail justify-between blur-overlay" onScroll={getScrollPos}>
-      <PlayingDecorator className="s-info sticky top-0" style={{ minWidth: '300px' }} currentsong={info} />
+      <PlayingDecorator className="s-info sticky top-0" style={{ minWidth: '300px' }} currentSong={info} />
       <div className="visualization relative  ml-scroll-right">
         <canvas
           style={{
@@ -104,12 +104,12 @@ export const Visualization = () => {
         <div className="lyrics-box">
           <div className={`header-pai sticky top-0 ${needColor ? ' need-bg' : ''}`}>Lời bài hát</div>
           <div className="lyrics">
-            {info?.lyric &&
+            {/*{info?.lyric &&
               info?.lyric.map((e, i) => (
                 <div className="px-1" key={i}>
                   {e.text}
                 </div>
-              ))}
+              ))}*/}
           </div>
         </div>
       </div>

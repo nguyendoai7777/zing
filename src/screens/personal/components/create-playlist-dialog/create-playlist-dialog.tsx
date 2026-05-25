@@ -1,9 +1,9 @@
 import { useState, type KeyboardEvent } from 'react';
 import { Dialog, FormControl, Input, InputLabel } from '@mui/material';
-import './create-playlist-dialog.css';
 import type { Song } from '@typing';
-import { uuid } from '@utils';
-import { CustomButtonOutlined } from '@components/custom-buttom';
+import { CustomButtonOutlined } from '@components/button';
+import './create-playlist-dialog.css';
+import XSvg from '@components/svg/svg';
 
 export interface CreatePlaylistDialogProps {
   open: boolean;
@@ -11,10 +11,9 @@ export interface CreatePlaylistDialogProps {
   currentSong?: Song | null;
 }
 
-export const CreatePlaylistDialog: FCC<CreatePlaylistDialogProps> = ({ open, onClose, currentSong }) => {
+export const CreatePlaylistDialog: FCC<CreatePlaylistDialogProps> = ({ open, onClose }) => {
   const [playlistName, setPlaylistName] = useState('');
   const [invalidName, setInvalidName] = useState(false);
-  const dispatch = useAppDispatch();
 
   const handleClose = () => {
     onClose();
@@ -30,13 +29,13 @@ export const CreatePlaylistDialog: FCC<CreatePlaylistDialogProps> = ({ open, onC
 
   const onCreate = () => {
     if (playlistName.length > 0) {
-      dispatch(
+      /*dispatch(
         createPlaylist({
           playlistName,
           song: currentSong,
           id: uuid(),
         })
-      );
+      );*/
       onClose();
       setPlaylistName('');
     } else {
@@ -62,19 +61,15 @@ export const CreatePlaylistDialog: FCC<CreatePlaylistDialogProps> = ({ open, onC
                 setInvalidName(!(e.currentTarget.value.length !== 0));
                 setPlaylistName(e.currentTarget.value);
               }}
-              endAdornment={
-                <svg className="create-icon">
-                  <use href="#Pen" />
-                </svg>
-              }
+              endAdornment={<XSvg className="create-icon" src="Pen" />}
             />
           </FormControl>
           {invalidName && <div className="r-invalid invalid-content-input">Không được để trống</div>}
         </div>
 
         <div className="flex justify-end" style={{ marginTop: '24px' }}>
-          <CustomButtonOutlined className="ml-3 capitalize" hovercolor="B0B0B0FF" textcolor="grey" onClick={handleClose} text="Đóng" />
-          <CustomButtonOutlined className="ml-3 capitalize " hovercolor="B0B0B0FF" textcolor="var(--nav-active-detective)" onClick={onCreate} text="Tạo" />
+          <CustomButtonOutlined className="ml-3 capitalize" hoverColor="B0B0B0FF" textColor="grey" onClick={handleClose} text="Đóng" />
+          <CustomButtonOutlined className="ml-3 capitalize " hoverColor="B0B0B0FF" textColor="var(--nav-active-detective)" onClick={onCreate} text="Tạo" />
         </div>
       </div>
     </Dialog>

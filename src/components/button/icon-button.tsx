@@ -1,18 +1,11 @@
 import { Button, type ButtonProps } from '@mui/material';
+import type { IconButtonProps } from '@components/button/button.types';
 
-export interface IconButtonProps {
-  siz?: string;
-  ariaLabel?: string;
-  cls?: string;
-  shape?: 'circle' | 'box';
-  ripplecolor?: string;
-}
-
-const DIconButton: FCC<ButtonProps & IconButtonProps> = (props) => {
+export const DIconButton: FCC<ButtonProps & IconButtonProps> = (props) => {
   return (
     <Button
       color="inherit"
-      className={`icon-button-self ${props.cls}`}
+      className={`icon-button-self ${props.className}`}
       style={{
         borderRadius: props.shape === 'box' ? '3px' : '50%',
         minWidth: props.siz ? props.siz : '40px',
@@ -22,7 +15,7 @@ const DIconButton: FCC<ButtonProps & IconButtonProps> = (props) => {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        color: props.ripplecolor || 'var(--nav-active-detective)',
+        color: props.rippleColor || 'var(--nav-active-detective)',
       }}
       aria-label={props.ariaLabel}
       variant="text"
@@ -33,5 +26,3 @@ const DIconButton: FCC<ButtonProps & IconButtonProps> = (props) => {
     </Button>
   );
 };
-
-export default DIconButton;

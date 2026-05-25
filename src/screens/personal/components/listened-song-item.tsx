@@ -1,12 +1,13 @@
 import { ButtonBase } from '@mui/material';
 import { Link } from 'react-router-dom';
-import type { MouseEvent, Ref, RefObject } from 'react';
+import type { MouseEvent, Ref } from 'react';
 import type { Song } from '@typing';
 import { nameConverter, stopParentEvent } from '@utils';
-import DIconButton from '@components/icon-button';
+import { useAudioStore } from '@zing/zstate';
+import { DIconButton } from '@components/button';
+import XSvg from '@components/svg/svg';
 
 interface CombinePropsWithBase {
-  className?: string;
   ref?: Ref<HTMLDivElement>;
   isPlaying?: boolean;
   onClick?(e: MouseEvent<HTMLElement>): void;
@@ -20,7 +21,7 @@ interface CombinePropsWithBase {
 type LHBProps = Omit<Song, 'songDuration' | 'listenTimes' | 'key' | 'index' | 'subArtist' | 'mediaUrl'>;
 
 export const ListenedSongItem: FCC<CombinePropsWithBase & LHBProps> = (pr) => {
-  const { currentSong } = useAppSelector(selectMediaPlayer);
+  const { currentSong } = useAudioStore((s) => s);
   return (
     <div
       ref={pr.ref}
@@ -52,9 +53,7 @@ export const ListenedSongItem: FCC<CombinePropsWithBase & LHBProps> = (pr) => {
       </ButtonBase>
       {!pr.isMobile && (
         <DIconButton className={`lde RippleColorTheme`} shape="box" onClick={(e) => pr.onOptionClick && pr.onOptionClick(e)}>
-          <svg>
-            <use href={`#${!pr.mode ? 'SmallMore' : 'Delete'}`} />
-          </svg>
+          <XSvg src={!pr.mode ? 'SmallMore' : 'Delete'} />
         </DIconButton>
       )}
     </div>

@@ -4,10 +4,9 @@ import './app.css';
 
 import { APP_ROUTING, NOT_NAV_ROUTING } from '@root-routes';
 import { DEFAULT_THEME, StorageKey } from '@const';
-import Navbar from '@components/navbar';
-import LeftSidebar from '@components/left-sidebar';
-import RightSidebar from '@components/right-sidebar';
+import { Navbar } from '@components/navbar';
 import { MediaPlayer } from '@components/media-player';
+import { NavSidebar, PlaylistSidebar } from '@components/sidebar';
 
 export function App() {
   useEffect(() => {
@@ -19,7 +18,7 @@ export function App() {
   return (
     <>
       <div className="flex rx-content">
-        <LeftSidebar />
+        <NavSidebar />
         <div className="main">
           <Navbar />
           <div className="scrollable-body">
@@ -35,7 +34,7 @@ export function App() {
             </Routes>
           </div>
         </div>
-        <RightSidebar />
+        <PlaylistSidebar />
       </div>
       <MediaPlayer />
     </>

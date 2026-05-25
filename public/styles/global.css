@@ -16,7 +16,12 @@
     color: #fff !important;
   }
 }
-
+.icon-fill {
+  fill: var(--ctrl-icon);
+}
+.h-nav-base {
+  height: 58px;
+}
 .active-base-controller {
   .MuiFormLabel-root {
     color: var(--normal-text-color);

@@ -10,8 +10,7 @@ interface RightSidebarProps {
   id?: string;
 }
 
-export const RightSidebar: FCC<RightSidebarProps> = ({ onToggleSidebar, id }) => {
-  // ─── LẤY STATES & ACTIONS TỪ ZUSTAND STORE ───────────────────────────
+export const PlaylistSidebar: FCC<RightSidebarProps> = ({ onToggleSidebar, id }) => {
   const currentList = useAudioStore((state) => state.currentList);
   const currentSong = useAudioStore((state) => state.currentSong);
   const isPlaying = useAudioStore((state) => state.isPlaying);
@@ -19,10 +18,7 @@ export const RightSidebar: FCC<RightSidebarProps> = ({ onToggleSidebar, id }) =>
 
   const [expand, setExpand] = useState(false);
 
-  // Hàm xử lý phát nhạc cực kỳ ngắn gọn nhờ logic cốt lõi đã nằm trong Store
   const handlePlaySong = (song: (typeof currentList)[number]) => {
-    // Gọi hàm playThisSong, truyền vào bài hát được bấm.
-    // Vì đang ở Sidebar danh sách chờ nên không cần truyền tham số mảng list thứ 2 để ghi đè hàng đợi.
     playThisSong(song);
   };
 
@@ -70,5 +66,3 @@ export const RightSidebar: FCC<RightSidebarProps> = ({ onToggleSidebar, id }) =>
     </>
   );
 };
-
-export default RightSidebar;
